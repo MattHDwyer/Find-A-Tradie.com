@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   belongs_to :role
-  has_many :business_profiles
+  has_one :business_profiles
 end
