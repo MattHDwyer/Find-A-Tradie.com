@@ -6,4 +6,10 @@ class User < ApplicationRecord
 
   belongs_to :role
   has_one :business_profiles
+
+  after_initialize :set_default_role, :if => :new_record?
+
+  def set_default_role
+    self.role = Role.find(2)
+  end
 end
