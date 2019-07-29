@@ -1,4 +1,9 @@
 <p id="notice"><%= notice %></p>
+<p>This is the show page for individual business</p>
+<p>
+  <strong>Trade Profession:</strong>
+ 
+</p>
 
 <p>
   <strong>Contact:</strong>
@@ -14,6 +19,13 @@
   <strong>Australian business number:</strong>
   <%= @business_profile.australian_business_number %>
 </p>
+
+<p>
+Review:
+
+
+<p>
+
 
 <%= link_to 'Edit', edit_business_profile_path(@business_profile) %> |
 <%= link_to 'Back', business_profiles_path %>

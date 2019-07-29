@@ -1,3 +1,3 @@
 class Contact < ApplicationRecord
-  belongs_to :business_profiles
+  belongs_to :business_profile
 end

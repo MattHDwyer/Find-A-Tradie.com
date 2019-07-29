@@ -1,1 +1,13 @@
+<h1>This is HOME PAGE</h1>
+
  <%= render 'nav' %>
+
+
+ <h1>Placerholder for Search Bar<h2>
+
+
+<%= form_tag(business_profiles_path, method: "get") do %>
+    <%= label_tag(:q, "Search for:") %>
+    <%= text_field_tag(:query) %>
+  <%= submit_tag("Search") %>
+<% end %>

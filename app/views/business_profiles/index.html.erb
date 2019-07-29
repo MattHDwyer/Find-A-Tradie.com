@@ -1,4 +1,41 @@
+<h1>This is search result page</h1>
+
+
 <p id="notice"><%= notice %></p>
+
+<%= form_tag(business_profiles_path, method: "get") do %>
+    <%= text_field_tag(:search, "Search for a tradie") %>
+    <%= text_field_tag(:location, "Location") %>
+    <%= submit_tag("Search") %>
+<% end %>
+
+<h2>Sort By</h2>
+
+<select name="post[person_id]" id="post_person_id">
+  
+  <option value=""></option>
+  <option value="1" selected="selected">Rating</option>
+  <option value="2">Distance</option>
+  <option value="3">Number of Reviews</option>
+</select>
+
+
+
+<h1> Search Result <h1>
+
+<p>
+
+  <div class="profile-search-result">
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>
+</div>
+
+</p>
+
+
+
+
 <h1>Business Profiles</h1>
 <table>
   <thead>
@@ -12,7 +49,9 @@
   <tbody>
     <% @business_profiles.each do |business_profile| %>
       <tr>
-        <td><%= business_profile.contact %></td>
+        <td><% if business_profile.contact != nil %></td>
+        <td><% business_profile.contact %></td>
+        <td><% end %></td>
         <td><%= business_profile.business_profile_description %></td>
         <td><%= business_profile.australian_business_number %></td>
         <td><%= link_to 'Show', business_profile %></td>
@@ -24,3 +63,6 @@
 </table>
 <br>
 <%= link_to 'New Business Profile', new_business_profile_path %>
+
+
+

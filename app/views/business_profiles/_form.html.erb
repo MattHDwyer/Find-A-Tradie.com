@@ -11,10 +11,11 @@
     </div>
   <% end %>
 
-  <div class="field">
+<div class="field">
     <%= form.label :contact_id %>
     <%= form.text_field :contact_id %>
   </div>
+
 
   <div class="field">
     <%= form.label :business_profile_description %>
@@ -24,6 +25,13 @@
   <div class="field">
     <%= form.label :australian_business_number %>
     <%= form.text_field :australian_business_number %>
+  </div>
+
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%# why the name of user gets shown%>
+    <%= form.text_field :user_id, value: current_user.id %>
   </div>
 
   <div class="actions">
