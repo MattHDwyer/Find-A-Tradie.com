@@ -5,11 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   belongs_to :role
-  has_one :business_profiles
+  has_many :business_profiles
 
   after_initialize :set_default_role, :if => :new_record?
 
   def set_default_role
-    self.role = Role.find(2)
+    self.role = Role.find(3)
   end
 end

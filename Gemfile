@@ -30,6 +30,9 @@ gem "jbuilder", "~> 2.5"
 # Used for Creating our Users
 gem "devise"
 
+# Uses 40+ API's for location 
+gem "geocoder"
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
