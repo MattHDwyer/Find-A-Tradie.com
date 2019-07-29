@@ -1,5 +1,5 @@
 class Contact < ApplicationRecord
-  has_one :business_profiles
+  has_many :business_profiles
 
   geocoded_by :address
   after_validation :geocode
