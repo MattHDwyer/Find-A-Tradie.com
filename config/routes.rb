@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   root to: "home#index"
   get "/gettrade" => "json#index"
   get "/getlocation" => "json#location"
+  get "/search" => "home#search"
 end

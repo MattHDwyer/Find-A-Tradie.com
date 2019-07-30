@@ -22,6 +22,7 @@
 
 $(document).ready(function() {
   $('#trade_selectbox').select2({
+    width: 'resolve',
     multiple: true,
     maximumSelectionLength: 1,
     ajax: {
@@ -38,6 +39,7 @@ $(document).ready(function() {
     }
   })
   $('#location_selectbox').select2({
+    width: 'resolve',
     multiple: true,
     maximumSelectionLength: 1,
     ajax: {

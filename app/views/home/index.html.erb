@@ -1,7 +1,7 @@
 <div class="home-nav">
   <%= render 'nav' %>
 </div>
-<div class="jumbotron jumbotron-fluid bg">
+<div class="jumbotron jumbotron-fluid mb-0 pb-0">
   <div class="container">
     <h1 class="display-4">
       <span class="badge badge-secondary display-2">Find a Trade.com</span>
@@ -9,15 +9,30 @@
     <p class="lead">&nbsp Find your local tradie </p>
     <br>
   </div>
-  <div class="search-wrapper">
-    <div class="container">
-      <div class="row">
-        <label for="trade_selectbox">Trade</label>
-        <select name="trade"  id="trade_selectbox" class="form-control w100" placeholder="Enter Trade">
+</div>
+<div class="container p-5">
+  <form action="/search" method="get">
+    <div class="row">
+      <div class="input-group mb-3 col-lg-6">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">Trade</span>
+        </div>
+        <select name="trade"  id="trade_selectbox" class="form-control" placeholder="Enter Trade">
         </select>
-        <label for="location_selectbox">Location</label>
-        <select name="location" id="location_selectbox" class="form-control w100" placeholder="Enter Suburb">
+      </div>
+      <div class="input-group mb-3 col-lg-6">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">Location</span>
+        </div>
+        <select name="location" id="location_selectbox" class="form-control" placeholder="Enter Suburb">
         </select>
       </div>
     </div>
-  </div>
+    <br>
+    <div class="form-group text-center">
+      <%= button_tag :class => "btn btn-info" do %>
+        Search <%=fa_icon('search') %>
+      <% end %>
+    </div>
+  </form>
+</div>
