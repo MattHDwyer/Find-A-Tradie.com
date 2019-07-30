@@ -1,4 +1,21 @@
 <%= render 'applications/nav' %>
 
 
-<h1>This is your dash board. User:<%= current_user.id%>
+<h1>This is your dash board. User:<%= current_user.id%></h1>
+
+<p><This is your business profiles></p>
+<%current_user.business_profiles.each do |profile|%>
+            <p>Business Name<p>
+            <p><%=profile.business_name%></p>
+            <p>Description:</p>
+            <p><%=profile.business_profile_description%></p>
+            <p>ABN</p>
+            <p><%=profile.australian_business_number%></p>
+        <%end%>
+
+<p><%= link_to "Add a new profile", new_business_profile_path%></p>
+<p><%= link_to "Edit your existing profile", edit_business_profile_path%></p>
+<p><%= link_to "See my public profile"%></p>
+<p><%= link_to "Manage your gallary"%></p>
+
+
