@@ -30,6 +30,9 @@ gem "jbuilder", "~> 2.5"
 # Used for Creating our Users
 gem "devise"
 
+#Used for helping with creating helpers
+gem "pundit"
+
 # Uses 40+ API's for location 
 gem "geocoder"
 
