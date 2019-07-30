@@ -12,12 +12,12 @@ body {
   color: white;
 }
 
-.text-inherit {
-  color: inherit;
-}
-
 .text-red {
   color: red;
+}
+
+.bg {
+  background: $bg;
 }
 
 .home-nav {
@@ -50,6 +50,19 @@ body {
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
+  }
+}
+//end
+
+//search
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  width: 95%;
+  justify-content: space-around;
+  margin: 0 auto;
+  .form-control {
+    display: inline-flex;
   }
 }
 //end

@@ -17,3 +17,24 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+//= require select2
+//= require home
+
+$(document).ready(function() {
+  $('#trade_selectbox').select2({
+    multiple: true,
+    maximumSelectionLength: 1,
+    ajax: {
+      url: '/gettrade.json',
+      dataType: 'json',
+      type: 'GET',
+      processResults: function(data) {
+        return {
+          results: $.map(data, function(item) {
+            return { id: item.id, text: item.trade_name }
+          })
+        }
+      }
+    }
+  })
+})
