@@ -4,14 +4,14 @@
     <title>FindATradie</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta meta name="viewport" content=  
+            "width=device-width, user-scalable=no" />
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>
