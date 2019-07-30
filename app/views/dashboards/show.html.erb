@@ -13,13 +13,17 @@
             <p><%=profile.australian_business_number%></p>
         <%end%>
 
+
+<p><%= link_to "Add business contact details", new_contact_path%></p>
+<p><%= link_to "Edit business contact details", edit_contact_path%></p>
+
 <p><%= link_to "Add a new profile", new_business_profile_path%></p>
 <p><%= link_to "Edit your existing profile", edit_business_profile_path%></p>
-<p><%= link_to "See my public profile"%></p>
+<p><%= link_to "See my public profile", business_profile_path%></p>
 <p><%= link_to "Manage your gallary"%></p>
 
 
-<p> Please add your contact </p>
+
 
 
 

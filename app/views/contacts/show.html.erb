@@ -21,4 +21,5 @@
 </p>
 
 <%= link_to 'Edit', edit_contact_path(@contact) %> |
-<%= link_to 'Back', contacts_path %>
+<%= link_to 'Back to dashboard', dashboard_path(current_user.id) %>
+
