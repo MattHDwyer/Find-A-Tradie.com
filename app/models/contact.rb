@@ -1,3 +1,11 @@
 class Contact < ApplicationRecord
-  belongs_to :business_profiles
+  has_many :business_profiles
+
+  geocoded_by :address
+  after_validation :geocode
+
+  def address
+    self.full_address
+  end
+
 end
