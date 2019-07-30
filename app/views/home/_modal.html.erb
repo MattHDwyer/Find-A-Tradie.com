@@ -1,0 +1,105 @@
+<!--Modal: Login / Register Form-->
+<div class="modal fade hide" id="modalForm" tabindex="-1" role="dialog" aria-labelledby="login/signup" aria-hidden="true">
+  <div class="modal-dialog cascading-modal" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        Login to continue 
+      </div>
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" data-toggle="tab" href="#login" role="tab"><%= fa_icon('user') %>
+            Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#signup" role="tab"><%= fa_icon('user-plus') %>
+            Register</a>
+        </li>
+      </ul>
+      <!-- Tab panels -->
+      <div class="tab-content">
+        <!--Login-->
+        <div class="tab-pane active" id="login" role="tabpanel">
+          <!--Body-->
+          <div class="modal-body">
+            <!--Form -->
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <div class="form-group">
+                <div class="field">
+                  <%= f.label :email do%>
+                    <%= fa_icon('envelope')%> Email Address
+                  <% end %>
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email" , :class => "form-control" %>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="field">
+                  <%= f.label :password do%>
+                    <%=fa_icon('lock') %> Password
+                  <% end %>
+                  <%= f.password_field :password, :class => "form-control"%>
+                </div>
+              </div>
+              <div class="text-center">
+                <%= button_tag :class => "btn btn-info" do %>
+                  Login <%=fa_icon('sign-in') %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+          <!--Footer-->
+          <div class="modal-footer">
+            <div class="options text-left">
+              <p> Dont have Account 
+                <%= link_to "Sign up?", new_user_registration_path, :class => "blue-text", :method => :get%>
+              </p>
+              <p>Forgot <%= link_to "Password?", "/users/password/new", :class => "blue-text", :method => :get%></p>
+            </div>
+            <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+        <!--/Signup-->
+        <div class="tab-pane" id="signup" role="tabpanel">
+          <!--Body-->
+          <div class="modal-body">
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= render "devise/shared/error_messages", resource: resource %>
+              <div class="form-group">
+                <%=fa_icon('envelope') %>
+                <%= f.label :email %><br />
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => "form-control"  %>
+              </div>
+              <div class="form-group">
+                <%=fa_icon('lock') %>
+                <%= f.label :password %>
+                <% if @minimum_password_length %>
+                  <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %><br />
+                <%= f.password_field :password, autocomplete: "new-password" , :class => "form-control" %>
+                <br>
+                <%= f.label :password_confirmation %><br />
+                <%= f.password_field :password_confirmation, autocomplete: "new-password" , :class => "form-control" %>
+              </div>
+              <div class="text-center">
+                <%= button_tag :class => "btn btn-info" do %>
+                  Signup <%=fa_icon('sign-in') %>
+                <% end %>
+              <% end %>
+            </div>
+            <br>
+            <!--Footer-->
+            <div class="modal-footer col-12">
+              <div class="option text-left">
+                already have an account
+                <%= link_to "Log in?", new_user_session_path, :class => "blue-text", :method => :get%>
+              </div>
+              <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--/.Content-->
+    </div>
+  </div>
+</div>
