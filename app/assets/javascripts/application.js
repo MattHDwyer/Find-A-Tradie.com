@@ -23,6 +23,7 @@
 $(document).ready(function() {
   $('#trade_selectbox').select2({
     width: 'resolve',
+    placeholder: 'Enter Trade Profession',
     multiple: true,
     maximumSelectionLength: 1,
     ajax: {
@@ -40,7 +41,9 @@ $(document).ready(function() {
   })
   $('#location_selectbox').select2({
     width: 'resolve',
+    placeholder: 'Enter suburb or postcode',
     multiple: true,
+    minimumInputLength: 2,
     maximumSelectionLength: 1,
     ajax: {
       url: '/getlocation.json',
