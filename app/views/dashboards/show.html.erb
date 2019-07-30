@@ -5,6 +5,13 @@
 
 <p><This is your business profiles></p>
 <%current_user.business_profiles.each do |profile|%>
+            <P>Business Contact:<p>
+            <%= profile.contact.email%>
+            <P>Business Email:</p>
+            <%= profile.contact.mobile_number%>
+            <p> Landline: </p>
+            <%= profile.contact.landline_number%>
+
             <p>Business Name<p>
             <p><%=profile.business_name%></p>
             <p>Description:</p>
@@ -20,7 +27,8 @@
 <p><%= link_to "Add a new profile", new_business_profile_path%></p>
 <p><%= link_to "Edit your existing profile", edit_business_profile_path%></p>
 <p><%= link_to "See my public profile", business_profile_path%></p>
-<p><%= link_to "Manage your gallary"%></p>
+<p><%= link_to "Manage your gallary - No pages linked"%></p>
+<p><%= link_to "Manage your membership - No pages linked"%></p>
 
 
 
