@@ -37,4 +37,23 @@ $(document).ready(function() {
       }
     }
   })
+  $('#location_selectbox').select2({
+    multiple: true,
+    maximumSelectionLength: 1,
+    ajax: {
+      url: '/getlocation.json',
+      dataType: 'json',
+      type: 'GET',
+      processResults: function(data) {
+        return {
+          results: $.map(data, function(item) {
+            return {
+              id: item.name,
+              text: item.name + ',' + item.state + ' ' + item.postcode
+            }
+          })
+        }
+      }
+    }
+  })
 })
