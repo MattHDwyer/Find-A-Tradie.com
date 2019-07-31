@@ -4,5 +4,10 @@
     List your Profile
   </button>
 <% else %>
-  <%= link_to "Sign out", destroy_user_session_path, {method: :delete} %>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/dashboards">Your Profile</a></li>
+      <li class="breadcrumb-item"> <%= link_to "Sign out", destroy_user_session_path, {method: :delete} %></li>
+    </ol>
+  </nav>
 <% end %>

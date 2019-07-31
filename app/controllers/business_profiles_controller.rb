@@ -28,7 +28,7 @@ class BusinessProfilesController < ApplicationController
 
     respond_to do |format|
       if @business_profile.save
-        format.html { redirect_to @business_profile, notice: 'Business profile was successfully created.' }
+        format.html { redirect_to @business_profile, notice: "Business profile was successfully created." }
         format.json { render :show, status: :created, location: @business_profile }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class BusinessProfilesController < ApplicationController
   def update
     respond_to do |format|
       if @business_profile.update(business_profile_params)
-        format.html { redirect_to @business_profile, notice: 'Business profile was successfully updated.' }
+        format.html { redirect_to @business_profile, notice: "Business profile was successfully updated." }
         format.json { render :show, status: :ok, location: @business_profile }
       else
         format.html { render :edit }
@@ -56,19 +56,20 @@ class BusinessProfilesController < ApplicationController
   def destroy
     @business_profile.destroy
     respond_to do |format|
-      format.html { redirect_to business_profiles_url, notice: 'Business profile was successfully destroyed.' }
+      format.html { redirect_to "/dashboards", notice: "Business profile was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_business_profile
-      @business_profile = BusinessProfile.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def business_profile_params
-      params.require(:business_profile).permit(:business_name, :user_id,:contact_id, :business_profile_description, :australian_business_number)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_business_profile
+    @business_profile = BusinessProfile.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def business_profile_params
+    params.require(:business_profile).permit(:business_name, :business_profile_description, :australian_business_number).merge!(:user_id => current_user.id)
+  end
 end

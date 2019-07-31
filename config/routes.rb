@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :ratings
   resources :business_profiles
+  get "contacts/new/:id" => "contacts#new"
   resources :contacts
   resources :dashboards
   devise_for :users, :controllers => { :registrations => "registrations" }
@@ -11,6 +12,6 @@ Rails.application.routes.draw do
   get "/gettrade" => "json#index"
   get "/getlocation" => "json#location"
   get "/search" => "home#search"
-  get "dashboards/:id" => "dashboards#show"
+  get "dashboards" => "dashboards#index"
   get "dashboards/signout" => "dashboards#signout"
 end

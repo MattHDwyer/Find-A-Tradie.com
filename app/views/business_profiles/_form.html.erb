@@ -2,42 +2,26 @@
   <% if business_profile.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(business_profile.errors.count, "error") %> prohibited this business_profile from being saved:</h2>
-
       <ul>
-      <% business_profile.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% business_profile.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
-
-    <div class="field">
+  <div class="field">
     <%= form.label :business_name %>
     <%= form.text_area :business_name %>
   </div>
-
   <div class="field">
     <%= form.label :business_profile_description %>
     <%= form.text_area :business_profile_description %>
   </div>
-
   <div class="field">
     <%= form.label :australian_business_number %>
     <%= form.text_field :australian_business_number %>
   </div>
-
-   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, value:current_user.id%>
-  </div>
-
-
   <div class="actions">
     <%= form.submit %>
   </div>
-
-
-
-
-
 <% end %>

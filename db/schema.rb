@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_31_050919) do
+ActiveRecord::Schema.define(version: 2019_07_31_012708) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,11 +39,11 @@ ActiveRecord::Schema.define(version: 2019_07_31_050919) do
     t.string "mobile_number"
     t.string "landline_number"
     t.string "full_address"
+    t.bigint "business_profile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "longitude"
     t.float "latitude"
-    t.bigint "business_profile_id"
     t.index ["business_profile_id"], name: "index_contacts_on_business_profile_id"
   end
 
