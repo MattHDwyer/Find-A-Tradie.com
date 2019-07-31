@@ -39,12 +39,12 @@ ActiveRecord::Schema.define(version: 2019_07_31_012708) do
     t.string "mobile_number"
     t.string "landline_number"
     t.string "full_address"
-    t.bigint "business_profiles_id"
+    t.bigint "business_profile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "longitude"
     t.float "latitude"
-    t.index ["business_profiles_id"], name: "index_contacts_on_business_profiles_id"
+    t.index ["business_profile_id"], name: "index_contacts_on_business_profile_id"
   end
 
   create_table "ratings", force: :cascade do |t|
@@ -90,6 +90,6 @@ ActiveRecord::Schema.define(version: 2019_07_31_012708) do
   add_foreign_key "business_profile_trades", "business_profiles"
   add_foreign_key "business_profile_trades", "trades"
   add_foreign_key "business_profiles", "users"
-  add_foreign_key "contacts", "business_profiles", column: "business_profiles_id"
+  add_foreign_key "contacts", "business_profiles"
   add_foreign_key "ratings", "business_profiles"
 end
