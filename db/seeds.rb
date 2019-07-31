@@ -33,66 +33,66 @@ role.each do |role|
 end
 puts "SEEDED Roles SUCCESSFULLY"
 
-contact = [
-  {
-    email: "spencerst@email.com",
-    mobile_number: "0000 000 000",
-    landline_number: "00 0000 0000",
-    full_address: "120 Spencer Street, Melbourne VIC",
-  },
-  {
-    email: "blackburn@email.com",
-    mobile_number: "0000 000 000",
-    landline_number: "00 0000 0000",
-    full_address: "14 Station Street, Blackburn VIC",
-  },
-  {
-    email: "bendigo@email.com",
-    mobile_number: "0000 000 000",
-    landline_number: "00 0000 0000",
-    full_address: "23 Wills Street, Bendigo VIC",
-  },
-  {
-    email: "ringwood@email.com",
-    mobile_number: "0000 000 000",
-    landline_number: "00 0000 0000",
-    full_address: "14 Albert Street, Ringwood VIC",
-  },
-  {
-    email: "burwood@email.com",
-    mobile_number: "0000 000 000",
-    landline_number: "00 0000 0000",
-    full_address: "53 Elgar Road, Burwood VIC",
-  },
-  {
-    email: "mounteliza@email.com",
-    mobile_number: "0000 000 000",
-    landline_number: "00 0000 0000",
-    full_address: "189 Mount Eliza Way, Mount Eliza VIC",
-  },
-  {
-    email: "warragul@email.com",
-    mobile_number: "0000 000 000",
-    landline_number: "00 0000 0000",
-    full_address: "12 Henshall Street, Warragul VIC",
-  },
-  {
-    email: "boxhill@email.com",
-    mobile_number: "0000 000 000",
-    landline_number: "00 0000 0000",
-    full_address: "23 Nelson Road, Box Hill VIC",
-  },
-  {
-    email: "nunawading@email.com",
-    mobile_number: "0000 000 000",
-    landline_number: "00 0000 0000",
-    full_address: "12 Luckie Street, Nunawading VIC",
-  },
+# contact = [
+#   {
+#     email: "spencerst@email.com",
+#     mobile_number: "0000 000 000",
+#     landline_number: "00 0000 0000",
+#     full_address: "120 Spencer Street, Melbourne VIC",
+#   },
+#   {
+#     email: "blackburn@email.com",
+#     mobile_number: "0000 000 000",
+#     landline_number: "00 0000 0000",
+#     full_address: "14 Station Street, Blackburn VIC",
+#   },
+#   {
+#     email: "bendigo@email.com",
+#     mobile_number: "0000 000 000",
+#     landline_number: "00 0000 0000",
+#     full_address: "23 Wills Street, Bendigo VIC",
+#   },
+#   {
+#     email: "ringwood@email.com",
+#     mobile_number: "0000 000 000",
+#     landline_number: "00 0000 0000",
+#     full_address: "14 Albert Street, Ringwood VIC",
+#   },
+#   {
+#     email: "burwood@email.com",
+#     mobile_number: "0000 000 000",
+#     landline_number: "00 0000 0000",
+#     full_address: "53 Elgar Road, Burwood VIC",
+#   },
+#   {
+#     email: "mounteliza@email.com",
+#     mobile_number: "0000 000 000",
+#     landline_number: "00 0000 0000",
+#     full_address: "189 Mount Eliza Way, Mount Eliza VIC",
+#   },
+#   {
+#     email: "warragul@email.com",
+#     mobile_number: "0000 000 000",
+#     landline_number: "00 0000 0000",
+#     full_address: "12 Henshall Street, Warragul VIC",
+#   },
+#   {
+#     email: "boxhill@email.com",
+#     mobile_number: "0000 000 000",
+#     landline_number: "00 0000 0000",
+#     full_address: "23 Nelson Road, Box Hill VIC",
+#   },
+#   {
+#     email: "nunawading@email.com",
+#     mobile_number: "0000 000 000",
+#     landline_number: "00 0000 0000",
+#     full_address: "12 Luckie Street, Nunawading VIC",
+#   },
 
-]
-contact.each do |contact|
-  Contact.create!(contact)
-end
+# ]
+# contact.each do |contact|
+#   Contact.create!(contact)
+# end
 
 puts "SEEDED Contact SUCCESSFULLY"
 
@@ -154,65 +154,65 @@ end
 
 puts "SEEDED User SUCCESSFULLY"
 
-bp = [
-  {
-    user_id: 1,
-    contact_id: 1,
-    business_profile_description: "Spencer Street Tradie",
-    australian_business_number: "000 000 000",
-  },
-  {
-    user_id: 2,
-    contact_id: 2,
-    business_profile_description: "Blackburn Tradie",
-    australian_business_number: "000 000 000",
-  },
-  {
-    user_id: 3,
-    contact_id: 3,
-    business_profile_description: "Bendigo Tradie",
-    australian_business_number: "000 000 000",
-  },
-  {
-    user_id: 4,
-    contact_id: 4,
-    business_profile_description: "Ringwood Tradie",
-    australian_business_number: "000 000 000",
-  },
-  {
-    user_id: 5,
-    contact_id: 5,
-    business_profile_description: "Burwood Tradie",
-    australian_business_number: "000 000 000",
-  },
-  {
-    user_id: 6,
-    contact_id: 6,
-    business_profile_description: "Mount Eliza Tradie",
-    australian_business_number: "000 000 000",
-  },
-  {
-    user_id: 7,
-    contact_id: 7,
-    business_profile_description: "Warragul Tradie",
-    australian_business_number: "000 000 000",
-  },
-  {
-    user_id: 8,
-    contact_id: 8,
-    business_profile_description: "Box Hill Tradie",
-    australian_business_number: "000 000 000",
-  },
-  {
-    user_id: 9,
-    contact_id: 9,
-    business_profile_description: "Nunawading Tradie",
-    australian_business_number: "000 000 000",
-  },
-]
+# bp = [
+#   {
+#     user_id: 1,
+#     contact_id: 1,
+#     business_profile_description: "Spencer Street Tradie",
+#     australian_business_number: "000 000 000",
+#   },
+#   {
+#     user_id: 2,
+#     contact_id: 2,
+#     business_profile_description: "Blackburn Tradie",
+#     australian_business_number: "000 000 000",
+#   },
+#   {
+#     user_id: 3,
+#     contact_id: 3,
+#     business_profile_description: "Bendigo Tradie",
+#     australian_business_number: "000 000 000",
+#   },
+#   {
+#     user_id: 4,
+#     contact_id: 4,
+#     business_profile_description: "Ringwood Tradie",
+#     australian_business_number: "000 000 000",
+#   },
+#   {
+#     user_id: 5,
+#     contact_id: 5,
+#     business_profile_description: "Burwood Tradie",
+#     australian_business_number: "000 000 000",
+#   },
+#   {
+#     user_id: 6,
+#     contact_id: 6,
+#     business_profile_description: "Mount Eliza Tradie",
+#     australian_business_number: "000 000 000",
+#   },
+#   {
+#     user_id: 7,
+#     contact_id: 7,
+#     business_profile_description: "Warragul Tradie",
+#     australian_business_number: "000 000 000",
+#   },
+#   {
+#     user_id: 8,
+#     contact_id: 8,
+#     business_profile_description: "Box Hill Tradie",
+#     australian_business_number: "000 000 000",
+#   },
+#   {
+#     user_id: 9,
+#     contact_id: 9,
+#     business_profile_description: "Nunawading Tradie",
+#     australian_business_number: "000 000 000",
+#   },
+# ]
 
-bp.each do |bp|
-  BusinessProfile.create!(bp)
-end
+# bp.each do |bp|
+#   BusinessProfile.create!(bp)
+# end
 
-puts "SEEDED BusinessProfile SUCCESSFULLY"
+# puts "SEEDED BusinessProfile SUCCESSFULLY"
