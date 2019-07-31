@@ -1,5 +1,5 @@
 class Contact < ApplicationRecord
-  has_many :business_profiles
+  belongs_to :business_profile
 
   geocoded_by :address
   after_validation :geocode
@@ -7,5 +7,4 @@ class Contact < ApplicationRecord
   def address
     self.full_address
   end
-
 end
