@@ -1,4 +1,4 @@
-class AddLongitudeAndLatitudeToContact < ActiveRecord::Migration[5.2]
+class AddLongLaToContact < ActiveRecord::Migration[5.2]
   def change
     add_column :contacts, :longitude, :float
     add_column :contacts, :latitude, :float

@@ -4,8 +4,8 @@ class CreateContacts < ActiveRecord::Migration[5.2]
       t.string :email
       t.string :mobile_number
       t.string :landline_number
-      t.string :address
-
+      t.string :full_address
+      t.references :business_profiles, foreign_key: true
       t.timestamps
     end
   end

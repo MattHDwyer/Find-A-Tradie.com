@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_30_071254) do
+ActiveRecord::Schema.define(version: 2019_07_31_012708) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,14 +25,12 @@ ActiveRecord::Schema.define(version: 2019_07_30_071254) do
   end
 
   create_table "business_profiles", force: :cascade do |t|
-    t.bigint "contact_id"
     t.text "business_profile_description"
     t.string "australian_business_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.string "business_name"
-    t.index ["contact_id"], name: "index_business_profiles_on_contact_id"
     t.index ["user_id"], name: "index_business_profiles_on_user_id"
   end
 
@@ -41,10 +39,12 @@ ActiveRecord::Schema.define(version: 2019_07_30_071254) do
     t.string "mobile_number"
     t.string "landline_number"
     t.string "full_address"
+    t.bigint "business_profiles_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "longitude"
     t.float "latitude"
+    t.index ["business_profiles_id"], name: "index_contacts_on_business_profiles_id"
   end
 
   create_table "ratings", force: :cascade do |t|
@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 2019_07_30_071254) do
 
   add_foreign_key "business_profile_trades", "business_profiles"
   add_foreign_key "business_profile_trades", "trades"
-  add_foreign_key "business_profiles", "contacts"
   add_foreign_key "business_profiles", "users"
+  add_foreign_key "contacts", "business_profiles", column: "business_profiles_id"
   add_foreign_key "ratings", "business_profiles"
 end
