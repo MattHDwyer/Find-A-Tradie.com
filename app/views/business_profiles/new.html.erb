@@ -1,9 +1,5 @@
 <h1>New Business Profile</h1>
 
-<%if User.find(current_user.id).business_profiles == []%>
-    <%= render 'contacts/form', contact: Contact.new%>
-<%end%>
-
 <%= render 'form', business_profile: @business_profile %>
 
 <%= link_to 'Back to dashboard', dashboard_path(current_user.id) %>

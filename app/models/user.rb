@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   belongs_to :role
   has_many :business_profiles
+  has_many :contacts
 
   after_initialize :set_default_role, :if => :new_record?
 
