@@ -1,17 +1,3 @@
 <h1>New Contact</h1>
-
-<form>
-<p>Mobile</p>
-<input>
-<p>Landline</p>
-<input>
-
-
-</form>
-
-
-
-<%# <%= render 'form', contact: @contact %> %>
-
-<%= link_to 'Back to dashboard', dashboard_path(current_user.id) %>
-
+<%= render 'form', contact: @contact %>
+<%= link_to 'Back to dashboard', "/dashboards" %>

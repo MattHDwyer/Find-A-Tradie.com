@@ -13,6 +13,7 @@
  *= require select2
  *= require font-awesome
  *= require home
+ *= require dashboards
  */
 
 @import 'bootstrap';
@@ -32,10 +33,9 @@ body {
   color: red;
 }
 
-
 .notice {
-  color:black;
+  color: black;
   z-index: 1;
   display: flex;
   position: absolute;
-} 
+}

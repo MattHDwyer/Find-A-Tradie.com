@@ -1,0 +1,83 @@
+<div class="container p-5 ">
+  <blockquote class="blockquote">
+    <p class="p-2 mt-4 display-4  badge-info"> Welcome to your Dashboard.</p>
+    <footer class="blockquote-footer"><%=  @user.first_name%>&nbsp <%= @user.last_name%>
+      , <%=@user.email%></footer>
+  </blockquote>
+  <h2>Business Profile</h2>
+  <hr>
+  <% @user.business_profiles.each_with_index do |profile, index|%>
+    <div class="card">
+      <div class="card-header">
+        <h3>Trade Profession</h3>
+      </div>
+      <div class="card-body">
+        <div class="row p-2">
+          <div class="col">
+            <span class="card-title h5 ">Business Name: </span>
+            <span class="card-text p"><%=profile.business_name%></span>
+          </div>
+          <div class="col">
+            <span class="card-title h5">ABN: </span>
+            <span class="card-text p"><%=profile.australian_business_number%></span>
+          </div>
+        </div>
+        <div class="p-2">
+          <span class="card-title h5">Description: </span>
+        </div>
+        <div class="description p-2">
+          <span class="card-text p"><%=profile.business_profile_description%></span>
+        </div>
+      </div>
+      <div class="row p-4">
+        <div class="col-4 ml-2">
+          <%= link_to 'Preview', profile , :class => "btn btn-outline-primary btn-sm p-1 mt-1"%>
+          <%= link_to 'Edit', edit_business_profile_path(profile),:class => "btn btn-outline-info btn-sm p-1 mt-1" %>
+          <%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' },:class => "btn btn-outline-danger btn-sm p-1 mt-1" %>
+        </div>
+      </div>
+    </div>
+    <% if !profile.contact%>
+      <div class="alert alert-danger" role="alert">
+        you haven't create contact yet please add contact to finalize your profile
+      </div>
+      <%= link_to "Add contact to this profile", "contacts/new/#{profile.id}",:class => "btn btn-outline-primary btn-sm p-1 mt-1"%>
+    <% else%>
+      <div class="card">
+        <div class="card-header">
+          <h4>Contact</h4>
+        </div>
+        <div class="card-body">
+          <div class="row ml-1">
+            <span class="card-title p ">Email: </span>
+            <span class="card-text p"><%=profile.contact.email%></span>
+          </div>
+          <div class="row ml-1">
+            <span class="card-title p">Full Address: </span>
+            <span class="card-text p"><%=profile.contact.full_address%></span>
+          </div>
+          <div class="row ml-1">
+            <span class="card-title p ">Mobile: </span>
+            <span class="card-text p"><%=profile.contact.mobile_number%></span>
+          </div>
+          <div class="row ml-1">
+            <span class="card-title p">Landline: </span>
+            <span class="card-text p"><%=profile.contact.landline_number%></span>
+          </div>
+          <div class="row p-4">
+            <%= link_to "edit profile contact",edit_contact_path(profile.contact.id), :class => "btn btn-outline-warning btn-sm"%>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- End loop -->
+  <hr>
+  <div class="container">
+    <p><%= link_to "Create profile", new_business_profile_path, :class => "btn btn-primary btn-sm"%></p>
+    <!-- <p><%= link_to "Manage all existing profiles", business_profiles_path%></p>  consider admin only-->
+    <!--<p><%= link_to "See my all Contact", business_profiles_path%></p>  consider admin only-->
+    <!--<p><%= link_to "Manage your gallary - No pages linked"%></p> -->
+    <!--<p><%= link_to "Manage your membership - No pages linked"%></p> -->
+  </div>
+</div>
