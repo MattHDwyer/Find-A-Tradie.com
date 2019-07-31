@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get "/gettrade" => "json#index"
   get "/getlocation" => "json#location"
   get "/search" => "home#search"
+  get "dashboards/all_user_business_profiles/:id" => "dashboards#all_user_business_profiles"
   get "dashboards/:id" => "dashboards#show"
   get "dashboards/signout" => "dashboards#signout"
+ 
 end

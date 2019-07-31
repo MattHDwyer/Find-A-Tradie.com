@@ -1,12 +1,9 @@
-<%= render 'applications/nav' %>
+
+<h1>This page is supposed to show all user specific profiles only</h1>
 
 
-<h1>This is your dash board. User:<%= current_user.id%></h1>
-<p>Account email is <%= current_user.email%></p>
+<p>Business Profile<p>
 
-
- <h2>Section of Business Profile</h2>
- <p>----------------------------<p>
 <%current_user.business_profiles.each_with_index do |profile, index|%>
             <%# <P>Business Contact:<p> %>  
             <p>Profile Index for this user: <%=index%> <p>
@@ -31,20 +28,3 @@
             <p>---------------------------------------</p>
 
         <%end%>
-
-<p><%= link_to "Add a new profile", new_business_profile_path%></p>
-<p><%= link_to "all_user_business_profiles", controller:"dashboards",action:"all_user_business_profiles"%></p>
-<a href="all_user_business_profiles/<%current_user.id%>">See all Profiles belonging to that user only</a>
-
-<p><%= link_to "See my all public profile", business_profiles_path%></p>
-
-<p><%= link_to "Manage your gallary - No pages linked"%></p>
-<p><%= link_to "Manage your membership - No pages linked"%></p>
-
-
-
-
-
-
-
-

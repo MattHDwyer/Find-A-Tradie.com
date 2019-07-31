@@ -4,4 +4,8 @@ class DashboardsController < ApplicationController
 
     end
 
+    def all_user_business_profiles
+
+    end
+
 end
