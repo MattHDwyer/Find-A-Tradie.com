@@ -1,7 +1,8 @@
-<h1>Editing Contact</h1>
-
-<%= render 'form', contact: @contact %>
-
-<%= link_to 'Show', @contact %> |
-<%= link_to 'Back to dashboard', dashboard_path(current_user.id) %>
-
+<div class="container">
+  <div class="row p-2">
+    <h1>Editing Contact</h1>
+  </div>
+  <%= render 'form', contact: @contact %>
+  <%= link_to 'Show', @contact %> |
+  <%= link_to 'Back to dashboard', "/dashboards" %>
+</div>

@@ -15,10 +15,12 @@ class ContactsController < ApplicationController
   # GET /contacts/new
   def new
     @contact = Contact.new
+    @business_profile_id = params[:id]
   end
 
   # GET /contacts/1/edit
   def edit
+    @business_profile_id = params[:id]
   end
 
   # POST /contacts

@@ -1,4 +1,4 @@
-<%= form_with(model: business_profile, local: true) do |form| %>
+  <%= form_with(model: business_profile, local: true) do |form| %>
   <% if business_profile.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(business_profile.errors.count, "error") %> prohibited this business_profile from being saved:</h2>
@@ -11,17 +11,17 @@
   <% end %>
   <div class="field">
     <%= form.label :business_name %>
-    <%= form.text_area :business_name %>
+    <%= form.text_field :business_name,class: "form-control" %>
   </div>
   <div class="field">
     <%= form.label :business_profile_description %>
-    <%= form.text_area :business_profile_description %>
+    <%= form.text_area :business_profile_description,class: "form-control ", rows: "7" %>
   </div>
   <div class="field">
     <%= form.label :australian_business_number %>
-    <%= form.text_field :australian_business_number %>
+    <%= form.text_field :australian_business_number,class: "form-control" %>
   </div>
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit :class => "btn btn-primary m-3" %>
   </div>
 <% end %>
