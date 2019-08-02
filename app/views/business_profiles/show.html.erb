@@ -1,7 +1,23 @@
-<p>
-  <strong>Contact:</strong>
-  <%= @business_profile.contact %>
-</p>
+<div class="profile-logo">AREA FOR BUSINESS LOGO</div>
+<div class="business-name-header"><h3><%= @business_profile.business_name%></h3></div>
+<------------------------------------------------------------>
+<div class="contact-details">
+  <h3>contact section:</h3>
+  <% if !@business_profile%>
+  <strong>Email:</strong>
+
+  <p><%= @business_profile.contact.email %></p>
+  <strong>Mobile:</strong>
+  <p><%= @business_profile.contact.mobile_number %></p>
+  <strong>Landline:</strong>
+  <p><%= @business_profile.contact.landline_number %></p>
+  <strong>Location:</strong>
+  <p><%= @business_profile.contact.full_address%>
+  <% end %>
+</div>
+<------------------------------------------------------------>
+<h3>business profile section</h3>
+
 <p>
   <strong>Business profile description:</strong>
   <%= @business_profile.business_profile_description %>
@@ -10,5 +26,27 @@
   <strong>Australian business number:</strong>
   <%= @business_profile.australian_business_number %>
 </p>
+
+<div class="photo-area"><h3>Business Photo Area</h3></div>
+
+<------------------------------------------------------------>
+
+<div class="viewer-comment-display-area"><h3>User comments display section header</h3>
+<%@business_profile.ratings.each do |rating|%>
+<p><strong>Star Rating:</strong></p>
+<%= rating.star_rating%>
+<p><strong>Comments:</strong><p>
+<%= rating.comment%>
+<%end%>
+</div>
+
+
+
+<div class="viewer-comment-contribute-area"><h3>Add your comment below</h3>
+
+
+<%= render 'ratings/form', rating: Rating.new %>
+
+
 <%= link_to 'Edit', edit_business_profile_path(@business_profile) %> |
 <%= link_to 'Back to dashboard', "/dashboards"%>
