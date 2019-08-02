@@ -1,4 +1,4 @@
-<h1>New Contact</h1>
+<%# <h1>New Contact</h1>
 
 <form>
 <p>Mobile</p>
@@ -7,11 +7,11 @@
 <input>
 
 
-</form>
+</form> %>
 
 
 
-<%# <%= render 'form', contact: @contact %> %>
+<%= render 'form', contact: @contact, business_profile_id:@bp %>
 
-<%= link_to 'Back to dashboard', dashboard_path(current_user.id) %>
+<%# <%= link_to 'Back to dashboard', dashboard_path(current_user.id) %> %>
 

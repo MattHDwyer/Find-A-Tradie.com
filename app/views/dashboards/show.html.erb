@@ -1,15 +1,17 @@
 <%= render 'applications/nav' %>
 
 
-<h1>This is your dash board. User:<%= current_user.id%></h1>
-<p>Account email is <%= current_user.email%></p>
+<h1>This is your dash board. User:<%= @user.id%></h1>
+<p>Account email is <%= @user.email%></p>
 
 
  <h2>Section of Business Profile</h2>
  <p>----------------------------<p>
-<%current_user.business_profiles.each_with_index do |profile, index|%>
+<%@user.business_profiles.each_with_index do |profile, index|%>
             <%# <P>Business Contact:<p> %>  
             <p>Profile Index for this user: <%=index%> <p>
+            <%@profileid = profile.id%>
+            
             <h3>Business Name:</h3>
             <p><%=profile.business_name%></p>
             <p>Description:</p>
@@ -19,23 +21,24 @@
             <h3>Busines Contact:</h3>
             <% if profile.contact == nil%>
             <p>No contact<p>
-             <%= link_to "create your contact", new_contact_path%>
+             <%= link_to "create your contact", new_contact_path(:contact => {:business_profile_id => profile.id})%>
+
             <% else%>
             <p>Mobile:<p>
             <%= profile.contact.mobile_number%>
             <p>Address<p>
             <%= profile.contact.address%>
-            <%= link_to "edit your contact", edit_contact_path%>
+            <%= link_to "edit your contact", edit_contact_path(profile.contact.id)%>
             <% end%>
             <p> X PHOTO X</p>
-   <%= link_to "Edit", edit_business_profile_path%>         
+   <%= link_to "Edit", edit_business_profile_path(profile.id)%>         
             <p>---------------------------------------</p>
 
         <%end%>
 
 <p><%= link_to "Add a new profile", new_business_profile_path%></p>
-<p><%= link_to "all_user_business_profiles", controller:"dashboards",action:"all_user_business_profiles"%></p>
-<a href="all_user_business_profiles/<%current_user.id%>">See all Profiles belonging to that user only</a>
+
+
 
 <p><%= link_to "See my all public profile", business_profiles_path%></p>
 
