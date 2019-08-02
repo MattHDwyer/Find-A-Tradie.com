@@ -31,15 +31,21 @@
 
 <------------------------------------------------------------>
 
-<div class="viewer-comment-display-area"><h3>User comments display section header</h3>
+<div class="viewer-comment-display-area"><h3>User comments display section header</h3></div>
 <%@business_profile.ratings.each do |rating|%>
-<p><strong>Star Rating:</strong></p>
+<p>Star Rating:</p>
 <%= rating.star_rating%>
-<p><strong>Comments:</strong><p>
+<p>Comments:</p>
 <%= rating.comment%>
-<%end%>
-</div>
 
+
+<p>Posted by User:</p>
+<%= rating.business_profile.user.email%>
+
+<%= link_to 'edit my comment', edit_rating_path(rating), :class => "btn btn-outline-primary btn-sm p-1 mt-1"%>
+<%= link_to 'Destroy', rating, method: :delete, data: { confirm: 'Are you sure?' },:class => "btn btn-outline-danger btn-sm p-1 mt-1" %>
+<p><------------------------------------------------------------><p>
+<%end%>
 
 
 <div class="viewer-comment-contribute-area"><h3>Add your comment below</h3>
@@ -48,5 +54,5 @@
 <%= render 'ratings/form', rating: Rating.new %>
 
 
-<%= link_to 'Edit', edit_business_profile_path(@business_profile) %> |
+<%= link_to 'Edit my business profile', edit_business_profile_path(@business_profile) %> |
 <%= link_to 'Back to dashboard', "/dashboards"%>
