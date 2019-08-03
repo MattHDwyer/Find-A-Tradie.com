@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   get "/search" => "home#search"
   get "dashboards" => "dashboards#index"
   get "dashboards/signout" => "dashboards#signout"
+  post "business_profiles/:id/ratings" => 'ratings#create'
 end

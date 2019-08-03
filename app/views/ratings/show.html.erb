@@ -2,7 +2,7 @@
 
 <p>
   <strong>Business profile:</strong>
-  <%= @rating.business_profile %>
+  <%= @rating.business_profile.id %>
 </p>
 
 <p>
@@ -15,5 +15,6 @@
   <%= @rating.comment %>
 </p>
 
+
 <%= link_to 'Edit', edit_rating_path(@rating) %> |
-<%= link_to 'Back', ratings_path %>
+<%= link_to 'Back to dashboard',dashboards_path%>
