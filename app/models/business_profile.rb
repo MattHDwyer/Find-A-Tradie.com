@@ -3,5 +3,5 @@ class BusinessProfile < ApplicationRecord
   has_one :contact, dependent: :destroy
   has_many :business_profile_trades
   has_many :trades, through: :business_profile_trades
-  has_many :ratings
+  has_many :ratings, dependent: :destroy
 end
