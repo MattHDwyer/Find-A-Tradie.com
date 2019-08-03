@@ -1,58 +1,87 @@
-<div class="profile-logo">AREA FOR BUSINESS LOGO</div>
-<div class="business-name-header"><h3><%= @business_profile.business_name%></h3></div>
-<------------------------------------------------------------>
-<div class="contact-details">
-  <h3>contact section:</h3>
-  <% if !@business_profile%>
-  <strong>Email:</strong>
-
-  <p><%= @business_profile.contact.email %></p>
-  <strong>Mobile:</strong>
-  <p><%= @business_profile.contact.mobile_number %></p>
-  <strong>Landline:</strong>
-  <p><%= @business_profile.contact.landline_number %></p>
-  <strong>Location:</strong>
-  <p><%= @business_profile.contact.full_address%>
-  <% end %>
+<div class="home-nav">
+  <%= render 'nav_common' %>
 </div>
-<------------------------------------------------------------>
-<h3>business profile section</h3>
-
-<p>
-  <strong>Business profile description:</strong>
-  <%= @business_profile.business_profile_description %>
-</p>
-<p>
-  <strong>Australian business number:</strong>
-  <%= @business_profile.australian_business_number %>
-</p>
-
-<div class="photo-area"><h3>Business Photo Area</h3></div>
-
-<------------------------------------------------------------>
-
-<div class="viewer-comment-display-area"><h3>User comments display section header</h3></div>
-<%@business_profile.ratings.each do |rating|%>
-<p>Star Rating:</p>
-<%= rating.star_rating%>
-<p>Comments:</p>
-<%= rating.comment%>
-
-
-<p>Posted by User:</p>
-<%= rating.business_profile.user.email%>
-
-<%= link_to 'edit my comment', edit_rating_path(rating), :class => "btn btn-outline-primary btn-sm p-1 mt-1"%>
-<%= link_to 'Destroy', rating, method: :delete, data: { confirm: 'Are you sure?' },:class => "btn btn-outline-danger btn-sm p-1 mt-1" %>
-<p><------------------------------------------------------------><p>
-<%end%>
-
-
-<div class="viewer-comment-contribute-area"><h3>Add your comment below</h3>
-
-
-<%= render 'ratings/form', rating: Rating.new %>
-
-
-<%= link_to 'Edit my business profile', edit_business_profile_path(@business_profile) %> |
-<%= link_to 'Back to dashboard', "/dashboards"%>
+<div class="container p-5 mt-5">
+  <div class="badge-info display-4 p-3 text-center">
+    <h3><%= @business_profile.business_name%></h3>
+  </div>
+  <hr>
+  <div class="row mx-auto">
+    <div class="contact-details col-lg-6 col-sm-12">
+      <h3 class="alert-secondary p-2">Contact</h3>
+      <% if @business_profile.contact%>
+        <ul class = "list-group list-group-flush">
+          <li class="list-group-item list-group-item-primary">
+            <strong>Email:</strong>
+            <span><%= @business_profile.contact.email %></span>
+          </li>
+          <li class="list-group-item list-group-item-primary">
+            <strong>Mobile:</strong>
+            <span><%= @business_profile.contact.mobile_number %></span>
+          </li>
+          <li class="list-group-item list-group-item-primary">
+            <strong>Landline:</strong>
+            <span><%= @business_profile.contact.landline_number %></span>
+          </li>
+          <li class="list-group-item list-group-item-primary">
+            <strong>Address:</strong>
+            <span><%= @business_profile.contact.full_address%></span>
+          </li>
+        </li>
+      <% else %>
+        <p>"No contact information given"</p>
+      <% end %>
+      <% if  @business_profile.ratings != [] %>
+        <hr>
+        <h3 class="alert-secondary p-2">Reviews
+          <span class="badge bg-thistle"><small><%= get_average_star(@business_profile.ratings)  %></small></span>
+        </h3>
+      <% end %>
+      <%@business_profile.ratings.each do |rating|%>
+        <div class = "form-control">
+          <div class = "container">
+            <span>Star Rating:</span>
+            <%= get_stars(rating.star_rating.to_i) %>
+            <br>
+            <span>Comments</span>
+            <div class="description p-2 bg-thistle height_2">
+              <%= rating.comment%>
+            </div>
+            <blockquote class="blockquote m-0 p-0">
+              <small>posted at :
+                <%= rating.business_profile.created_at.to_s.split(" ").first%>
+              </small>
+            </blockquote>
+            <%if rating.business_profile.user == current_user  %>
+              <%= link_to 'Destroy', rating, method: :delete, data: { confirm: 'Are you sure?' },:class => "btn btn-outline-danger btn-sm p-1 mt-1" %>
+            <% end %>
+          </div>
+        </div>
+      <%end%>
+      <div class="container form-control mt-2 bg-thistle mb-2">
+        <h3>Leave reviews</h3>
+        <%= render 'ratings/form', rating: Rating.new %>
+        <br>
+      </div>
+    </div>
+    <div class="contact-details col-lg-6 col-sm-12">
+      <h3 class="alert-secondary p-2">Business Profile</h3>
+      <ul class = "list-group list-group-flush">
+        <li class="list-group-item ">
+          <strong>Business name : </strong>
+          <span><%= @business_profile.business_name %></span>
+        </li>
+        <li class="list-group-item">
+          <strong>Description</strong>
+          <div class="description p-2  bg-none"><%=@business_profile.business_profile_description  %></div>
+        </li>
+        <li class="list-group-item">
+          <strong>ABN : </strong>
+          <span><%= @business_profile.australian_business_number %></span>
+        </li>
+      </li>
+      <br>
+      <div class="photo-area">
+        <h3 class="alert-secondary p-2">Gallery</h3>
+      </div>
+    </div>

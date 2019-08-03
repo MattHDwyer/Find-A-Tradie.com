@@ -2,31 +2,22 @@
   <% if rating.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(rating.errors.count, "error") %> prohibited this rating from being saved:</h2>
-
       <ul>
-      <% rating.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% rating.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :business_profile_id %>
-    <%= form.text_field :business_profile_id ,value:params[:id] %>
-  </div>
-
-  <div class="field">
+  <%= form.text_field :business_profile_id ,value:params[:id], hidden:true %>
+  <div class="container">
     <%= form.label :star_rating %>
-    <%= form.number_field :star_rating %>
-  </div>
-
-  <div class="field">
-    <%= form.label :comment %>
-    <%= form.text_area :comment %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+    <%=form.select :star_rating , options_for_select([["1 stars",1],["2 stars",2],["3 stars",3],["4 stars",4],["5 stars",5]]) ,class: "form-control"%>
+    <div class="field">
+      <%= form.label :comment %>
+      <%= form.text_area :comment,class: "form-control" %>
+    </div>
+    <br>
+    <%= form.submit  "Rate this Tradies", class:"btn btn-primary"%>
   </div>
 <% end %>

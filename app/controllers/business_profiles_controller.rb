@@ -1,6 +1,6 @@
 class BusinessProfilesController < ApplicationController
-  before_action :set_business_profile, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_business_profile, only: [:edit, :update, :destroy]
+  before_action :find_profile, only: [:show]
   # GET /business_profiles
   # GET /business_profiles.json
   def index
@@ -40,13 +40,17 @@ class BusinessProfilesController < ApplicationController
   # PATCH/PUT /business_profiles/1
   # PATCH/PUT /business_profiles/1.json
   def update
-    respond_to do |format|
-      if @business_profile.update(business_profile_params)
-        format.html { redirect_to @business_profile, notice: "Business profile was successfully updated." }
-        format.json { render :show, status: :ok, location: @business_profile }
-      else
-        format.html { render :edit }
-        format.json { render json: @business_profile.errors, status: :unprocessable_entity }
+    if @business_profile.user_id.to_i != current_user.id
+      format.html { redirect_to "/", notice: "Error editing profile" }
+    else
+      respond_to do |format|
+        if @business_profile.update(business_profile_params)
+          format.html { redirect_to @business_profile, notice: "Business profile was successfully updated." }
+          format.json { render :show, status: :ok, location: @business_profile }
+        else
+          format.html { render :edit }
+          format.json { render json: @business_profile.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -65,6 +69,18 @@ class BusinessProfilesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_business_profile
+    if current_user
+      if current_user.id == BusinessProfile.find(params[:id]).user_id
+        @business_profile = BusinessProfile.find(params[:id])
+      else
+        redirect_to "/"
+      end
+    else
+      redirect_to "/"
+    end
+  end
+
+  def find_profile
     @business_profile = BusinessProfile.find(params[:id])
   end
 

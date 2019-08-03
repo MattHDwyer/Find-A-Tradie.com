@@ -1,20 +1,15 @@
 <p id="notice"><%= notice %></p>
-
 <p>
   <strong>Business profile:</strong>
   <%= @rating.business_profile.id %>
 </p>
-
 <p>
   <strong>Star rating:</strong>
   <%= @rating.star_rating %>
 </p>
-
 <p>
   <strong>Comment:</strong>
   <%= @rating.comment %>
 </p>
-
-
 <%= link_to 'Edit', edit_rating_path(@rating) %> |
 <%= link_to 'Back to dashboard',dashboards_path%>
