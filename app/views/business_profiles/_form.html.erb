@@ -9,18 +9,26 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
+  <p class="alert"><%= @err %></p>
+  <div class="row">
     <%= form.label :business_name %>
     <%= form.text_field :business_name,class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="row">
     <%= form.label :business_profile_description %>
-    <%= form.text_area :business_profile_description,class: "form-control ", rows: "7" %>
+    <%= form.text_area :business_profile_description,class: "form-control ", rows: "5" %>
   </div>
-  <div class="field">
+  <div class="row">
     <%= form.label :australian_business_number %>
     <%= form.text_field :australian_business_number,class: "form-control" %>
   </div>
+  <% if !BusinessProfileTrade.find_by(business_profile_id:@business_profile.id) %>
+    <div class="row">
+      <%= form.label "Select Trade you profession in (3 max)" %>
+      <select name="trade[]" multiple=""  id="trade_selectbox" class="form-control">
+      </select>
+    </div>
+  <% end %>
   <div class="actions">
     <%= form.submit :class => "btn btn-primary m-3" %>
   </div>

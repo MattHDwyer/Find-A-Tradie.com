@@ -7,7 +7,7 @@
   <h2>Business Profile</h2>
   <hr>
   <div class="container">
-    <p><%= link_to "Create new profile", new_business_profile_path, :class => "btn btn-primary btn-sm"%></p>
+    <p><%= link_to "Create new profile", new_business_profile_path, :class => "btn btn-primary btn-sm", method: :get %></p>
     <!-- <p><%= link_to "Manage all existing profiles", business_profiles_path%></p>  consider admin only-->
     <!--<p><%= link_to "See my all Contact", business_profiles_path%></p>  consider admin only-->
     <!--<p><%= link_to "Manage your gallary - No pages linked"%></p> -->
@@ -16,7 +16,9 @@
   <% @user.business_profiles.each_with_index do |profile, index|%>
     <div class="card">
       <div class="card-header">
-        <h3>Trade Profession</h3>
+        <% BusinessProfileTrade.where(business_profile_id:profile.id).each do |item|%>
+          <span class="badge badge-success p-1"><%= item.trade.trade_name %></span>
+        <% end %>
       </div>
       <div class="card-body">
         <div class="row p-2">
@@ -39,7 +41,7 @@
       <div class="row p-4">
         <div class="col-4 ml-2">
           <%= link_to 'Preview', profile , :class => "btn btn-outline-primary btn-sm p-1 mt-1"%>
-          <%= link_to 'Edit', edit_business_profile_path(profile),:class => "btn btn-outline-info btn-sm p-1 mt-1" %>
+          <%= link_to 'Edit', edit_business_profile_path(profile),:class => "btn btn-outline-info btn-sm p-1 mt-1", method: :get  %>
           <%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' },:class => "btn btn-outline-danger btn-sm p-1 mt-1" %>
         </div>
       </div>
