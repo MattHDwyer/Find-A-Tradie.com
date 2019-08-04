@@ -3,10 +3,35 @@
 </div>
 <div class="container p-5 mt-5">
   <div class="badge-info display-4 p-3 text-center">
-    <h3><%= @business_profile.business_name%></h3>
+    <h3><%= @business_profile.business_name%>  : 
+      <% BusinessProfileTrade.where(business_profile_id:@business_profile.id).each do |item|%>
+        <span class="badge badge-warning bg-thistle"><%= item.trade.trade_name %></span>
+      <% end %>
+    </h3>
   </div>
   <hr>
   <div class="row mx-auto">
+    <div class="contact-details col-lg-6 col-sm-12">
+      <h3 class="alert-secondary p-2">Business Profile</h3>
+      <ul class = "list-group list-group-flush">
+        <li class="list-group-item ">
+          <strong>Business name : </strong>
+          <span><%= @business_profile.business_name %></span>
+        </li>
+        <li class="list-group-item">
+          <strong>Description</strong>
+          <div class="description p-2  bg-none"><%=@business_profile.business_profile_description  %></div>
+        </li>
+        <li class="list-group-item">
+          <strong>ABN : </strong>
+          <span><%= @business_profile.australian_business_number %></span>
+        </li>
+      </li>
+      <br>
+      <div class="photo-area">
+        <h3 class="alert-secondary p-2">Gallery</h3>
+      </div>
+    </div>
     <div class="contact-details col-lg-6 col-sm-12">
       <h3 class="alert-secondary p-2">Contact</h3>
       <% if @business_profile.contact%>
@@ -64,24 +89,5 @@
         <br>
       </div>
     </div>
-    <div class="contact-details col-lg-6 col-sm-12">
-      <h3 class="alert-secondary p-2">Business Profile</h3>
-      <ul class = "list-group list-group-flush">
-        <li class="list-group-item ">
-          <strong>Business name : </strong>
-          <span><%= @business_profile.business_name %></span>
-        </li>
-        <li class="list-group-item">
-          <strong>Description</strong>
-          <div class="description p-2  bg-none"><%=@business_profile.business_profile_description  %></div>
-        </li>
-        <li class="list-group-item">
-          <strong>ABN : </strong>
-          <span><%= @business_profile.australian_business_number %></span>
-        </li>
-      </li>
-      <br>
-      <div class="photo-area">
-        <h3 class="alert-secondary p-2">Gallery</h3>
-      </div>
-    </div>
+  </div>
+</div>

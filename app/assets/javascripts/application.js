@@ -25,7 +25,7 @@ $(document).ready(function() {
     width: 'resolve',
     placeholder: 'Enter Trade Profession',
     multiple: true,
-    maximumSelectionLength: 1,
+    maximumSelectionLength: 3,
     ajax: {
       url: '/gettrade.json',
       dataType: 'json',
