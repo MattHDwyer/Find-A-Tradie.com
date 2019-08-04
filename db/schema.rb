@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_29_063329) do
+ActiveRecord::Schema.define(version: 2019_07_30_055130) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2019_07_29_063329) do
     t.datetime "updated_at", null: false
     t.float "longitude"
     t.float "latitude"
+    t.integer "travel_distance"
   end
 
   create_table "ratings", force: :cascade do |t|
