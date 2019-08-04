@@ -201,7 +201,10 @@ Each night, the code is pushed into the github and a second person will merge hi
 
 * Discuss how Agile methodology is being implemented in your project.
 
+Our code development starts when the framework is done.
+When we are fine tuning the details of design. The view pages is already finished based on the wireframe of the prelimary design.
 
+When the research of the new features are completed. When keep updated our existing code and let it incorporated into our design. Then we do basically styling after each function can be achieved.
 
 
 * Provide an overview and description of your Source control process.
