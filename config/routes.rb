@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   get "contacts/new/:id" => "contacts#new"
   resources :contacts
   resources :dashboards
-  resources :galleries
   
   # devise part below
   resources :charges
@@ -22,4 +21,9 @@ Rails.application.routes.draw do
   get "dashboards/signout" => "dashboards#signout"
   post "business_profiles/:id/ratings" => 'ratings#create'
   get "galleries/new/:id" => "galleries#new"
+  get "galleries/edit/:id" => "galleries#edit"
+  
+  patch "/galleries/edit/logo_photo_destroy" => "galleries#photo_destroy"
+  
+
 end

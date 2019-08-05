@@ -49,6 +49,8 @@
     </div>
     <%# add photos/gallery to this profile%>
     <%= link_to "Add business logo and gallery photos to this profile", "galleries/new/#{profile.id}"%>
+    <p><%= link_to "Manage your existing pohotos", "galleries/edit/#{profile.id}"%></p>
+    
     <p><strong>Logo Space</strong></p>
     <% if profile.logo_image.attached?%>
     <%= image_tag profile.logo_image%>
