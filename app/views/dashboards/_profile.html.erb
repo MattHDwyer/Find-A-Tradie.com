@@ -43,9 +43,30 @@
           <%= link_to 'Preview', profile , :class => "btn btn-outline-primary btn-sm p-1 mt-1"%>
           <%= link_to 'Edit', edit_business_profile_path(profile),:class => "btn btn-outline-info btn-sm p-1 mt-1", method: :get  %>
           <%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' },:class => "btn btn-outline-danger btn-sm p-1 mt-1" %>
+          <%= link_to 'Manage Subscription - no links'%>
         </div>
       </div>
     </div>
+    <%# add photos/gallery to this profile%>
+    <%= link_to "Add business logo and gallery photos to this profile", "galleries/new/#{profile.id}"%>
+    <p><strong>Logo Space</strong></p>
+    <% if profile.logo_image.attached?%>
+    <%= image_tag profile.logo_image%>
+    <% else%>
+    <p> No logo image for this profile</p>
+    <%end%>
+
+<p><strong>Project Photos Space</strong></p>
+<% if profile.images.attached?%>
+    <% profile.images.each do |image| %>
+      <%= image_tag image %>
+    <% end %>
+    <% else%>
+    <p> No image for this profile</p>
+    <%end%>
+
+
+
     <% if !profile.contact%>
       <div class="alert alert-danger" role="alert">
         you haven't create contact yet please add contact to finalize your profile
@@ -84,3 +105,6 @@
   <% end %>
   <!-- End loop -->
 </div>
+
+ <%= render "layouts/shared/stripe_form" %>
+
