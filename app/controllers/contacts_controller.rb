@@ -26,14 +26,20 @@ class ContactsController < ApplicationController
   # POST /contacts
   # POST /contacts.json
   def create
-    @contact = Contact.new(contact_params)
-    respond_to do |format|
-      if @contact.save
-        format.html { redirect_to @contact, notice: "Contact was successfully created." }
-        format.json { render :show, status: :created, location: @contact }
-      else
-        format.html { render :new }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
+    if !contact_params
+      respond_to do |format|
+        format.html { redirect_to "/contacts/new/#{params[:id]}", notice: "Address not exist" }
+      end
+    else
+      @contact = Contact.new(contact_params)
+      respond_to do |format|
+        if @contact.save
+          format.html { redirect_to "/dashboards", notice: "Contact was successfully created." }
+          format.json { render :show, status: :created, location: @contact }
+        else
+          format.html { render :new }
+          format.json { render json: @contact.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -41,13 +47,19 @@ class ContactsController < ApplicationController
   # PATCH/PUT /contacts/1
   # PATCH/PUT /contacts/1.json
   def update
-    respond_to do |format|
-      if @contact.update(edit_contact_params)
-        format.html { redirect_to @contact, notice: "Contact was successfully updated." }
-        format.json { render :show, status: :ok, location: @contact }
-      else
-        format.html { render :edit }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
+    if !edit_contact_params
+      respond_to do |format|
+        format.html { redirect_to "/contacts/#{params[:id]}/edit/", notice: "Address not exist" }
+      end
+    else
+      respond_to do |format|
+        if @contact.update(edit_contact_params)
+          format.html { redirect_to "/dashboards", notice: "Contact was successfully updated." }
+          format.json { render :show, status: :ok, location: @contact }
+        else
+          format.html { render :edit }
+          format.json { render json: @contact.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -69,7 +81,9 @@ class ContactsController < ApplicationController
     if Contact.find(params[:id].to_i).business_profile.user == current_user
       @contact = Contact.find(params[:id])
     else
-      format.html { redirect_to "/", notice: "Error editing contact" }
+      respond_to do |format|
+        format.html { redirect_to "/", notice: "Error editing contact" }
+      end
     end
   end
 
@@ -77,18 +91,41 @@ class ContactsController < ApplicationController
   def contact_params
     #check if current user are the one who add the contact to profile
     if BusinessProfile.find(params[:id].to_i).user == current_user
-      params.require(:contact).permit(:email, :mobile_number, :landline_number, :full_address).merge!(:business_profile_id => params[:id])
+      p = params.require(:contact).permit(:email, :mobile_number, :landline_number, :full_address).merge!(:business_profile_id => params[:id])
+      x = p[:full_address]
+      locates = Geocoder.search(x)
+      if locates.length > 0
+        locate = locates.find { |l| l.country == "Australia" }
+        p.merge!(:latitude => locate.coordinates.first)
+        p.merge!(:longitude => locate.coordinates.last)
+        return p
+      else
+        false
+      end
     else
-      format.html { redirect_to "/", notice: "Error adding contact" }
+      respond_to do |format|
+        format.html { redirect_to "/dashboards", notice: "Error adding contact" }
+        false
+      end
     end
   end
 
   def edit_contact_params
     #check if current user are the one who add the contact to profile
     if Contact.find(params[:id].to_i).business_profile.user == current_user
-      params.require(:contact).permit(:email, :mobile_number, :landline_number, :full_address).merge!(:business_profile_id => Contact.find(params[:id].to_i).business_profile.id)
+      p = params.require(:contact).permit(:email, :mobile_number, :landline_number, :full_address).merge!(:business_profile_id => Contact.find(params[:id].to_i).business_profile.id)
+      x = p[:full_address]
+      locates = Geocoder.search(x)
+      if locates.length > 0
+        locate = locates.find { |l| l.country == "Australia" }
+        p.merge!(:latitude => locate.coordinates.first)
+        p.merge!(:longitude => locate.coordinates.last)
+        return p
+      else
+        false
+      end
     else
-      format.html { redirect_to "/", notice: "Error adding contact" }
+      false
     end
   end
 end

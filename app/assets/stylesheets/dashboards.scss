@@ -21,3 +21,27 @@
 .height_2 {
   height: 2em !important;
 }
+
+.font-n {
+  font-size: calc(1em + 1vw) !important;
+}
+
+hr.border-1 {
+  border: 2px solid #ffa07a;
+  border-radius: 5px;
+}
+
+.bg-profile {
+  background-color: #ececec;
+  border: 1px solid #0275d8;
+}
+
+.image_btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.image-container {
+  position: relative;
+}

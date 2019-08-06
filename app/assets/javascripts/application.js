@@ -53,7 +53,7 @@ $(document).ready(function() {
         return {
           results: $.map(data, function(item) {
             return {
-              id: item.name,
+              id: item.postcode,
               text: item.name + ',' + item.state + ' ' + item.postcode
             }
           })

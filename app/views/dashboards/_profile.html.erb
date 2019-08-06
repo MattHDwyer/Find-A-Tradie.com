@@ -1,10 +1,10 @@
 <div class="container p-5 ">
   <blockquote class="blockquote">
-    <p class="p-2 mt-4 display-4  badge-info"> Welcome to your Dashboard.</p>
+    <p class="p-2 mt-4 display-4  badge-info font-n"> Welcome to your Dashboard.</p>
     <footer class="blockquote-footer"><%=  @user.first_name%>&nbsp <%= @user.last_name%>
       , <%=@user.email%></footer>
   </blockquote>
-  <h2>Business Profile</h2>
+  <h4>Business Profile</h4>
   <hr>
   <div class="container">
     <p><%= link_to "Create new profile", new_business_profile_path, :class => "btn btn-primary btn-sm", method: :get %></p>
@@ -14,99 +14,121 @@
     <!--<p><%= link_to "Manage your membership - No pages linked"%></p> -->
   </div>
   <% @user.business_profiles.each_with_index do |profile, index|%>
-    <div class="card">
-      <div class="card-header">
-        <% BusinessProfileTrade.where(business_profile_id:profile.id).each do |item|%>
-          <span class="badge badge-success p-1"><%= item.trade.trade_name %></span>
-        <% end %>
-      </div>
-      <div class="card-body">
-        <div class="row p-2">
-          <div class="col">
-            <span class="card-title h5 ">Business Name: </span>
-            <span class="card-text p"><%=profile.business_name%></span>
-          </div>
-          <div class="col">
-            <span class="card-title h5">ABN: </span>
-            <span class="card-text p"><%=profile.australian_business_number%></span>
-          </div>
-        </div>
-        <div class="p-2">
-          <span class="card-title h5">Description: </span>
-        </div>
-        <div class="description p-2">
-          <span class="card-text p"><%=profile.business_profile_description%></span>
-        </div>
-      </div>
-      <div class="row p-4">
-        <div class="col-4 ml-2">
-          <%= link_to 'Preview', profile , :class => "btn btn-outline-primary btn-sm p-1 mt-1"%>
-          <%= link_to 'Edit', edit_business_profile_path(profile),:class => "btn btn-outline-info btn-sm p-1 mt-1", method: :get  %>
-          <%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' },:class => "btn btn-outline-danger btn-sm p-1 mt-1" %>
-          <%= link_to 'Manage Subscription - no links'%>
-        </div>
-      </div>
-    </div>
-    <%# add photos/gallery to this profile%>
-    <%= link_to "Add business logo and gallery photos to this profile", "galleries/new/#{profile.id}"%>
-    <p><%= link_to "Manage your existing pohotos", "galleries/edit/#{profile.id}"%></p>
-    
-    <p><strong>Logo Space</strong></p>
-    <% if profile.logo_image.attached?%>
-    <%= image_tag profile.logo_image%>
-    <% else%>
-    <p> No logo image for this profile</p>
-    <%end%>
-
-<p><strong>Project Photos Space</strong></p>
-<% if profile.images.attached?%>
-    <% profile.images.each do |image| %>
-      <%= image_tag image %>
-    <% end %>
-    <% else%>
-    <p> No image for this profile</p>
-    <%end%>
-
-
-
-    <% if !profile.contact%>
-      <div class="alert alert-danger" role="alert">
-        you haven't create contact yet please add contact to finalize your profile
-      </div>
-      <%= link_to "Add contact to this profile", "contacts/new/#{profile.id}",:class => "btn btn-outline-primary btn-sm p-1 mt-1"%>
-    <% else%>
+    <div class="bg-profile">
       <div class="card">
         <div class="card-header">
-          <h4>Contact</h4>
+          <% BusinessProfileTrade.where(business_profile_id:profile.id).each do |item|%>
+            <span class="badge badge-success p-1"><%= item.trade.trade_name %></span>
+          <% end %>
         </div>
         <div class="card-body">
-          <div class="row ml-1">
-            <span class="card-title p ">Email: </span>
-            <span class="card-text p"><%=profile.contact.email%></span>
+          <div class="row p-2">
+            <div class="col">
+              <span class="card-title h5 ">Business Name: </span>
+              <span class="card-text p"><%=profile.business_name%></span>
+            </div>
+            <div class="col">
+              <span class="card-title h5">ABN: </span>
+              <span class="card-text p"><%=profile.australian_business_number%></span>
+            </div>
           </div>
-          <div class="row ml-1">
-            <span class="card-title p">Full Address: </span>
-            <span class="card-text p"><%=profile.contact.full_address%></span>
+          <div class="p-2">
+            <span class="card-title h5">Description: </span>
           </div>
-          <div class="row ml-1">
-            <span class="card-title p ">Mobile: </span>
-            <span class="card-text p"><%=profile.contact.mobile_number%></span>
+          <div class="description p-2">
+            <span class="card-text p"><%=profile.business_profile_description%></span>
           </div>
-          <div class="row ml-1">
-            <span class="card-title p">Landline: </span>
-            <span class="card-text p"><%=profile.contact.landline_number%></span>
-          </div>
-          <div class="row p-4">
-            <%= link_to "edit profile contact",edit_contact_path(profile.contact.id), :class => "btn btn-outline-primary btn-sm"%>
+        </div>
+        <div class="row p-4">
+          <div class="col ml-2">
+            <%= link_to 'Preview', profile , :class => "btn btn-outline-primary btn-sm p-1 mt-1"%>
+            <%= link_to 'Edit', edit_business_profile_path(profile),:class => "btn btn-outline-info btn-sm p-1 mt-1", method: :get  %>
+            <%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' },:class => "btn btn-outline-danger btn-sm p-1 mt-1" %>
+            <%= link_to 'Manage Subscription', profile, :class => "btn btn-outline-success btn-sm p-1 mt-1" %>
           </div>
         </div>
       </div>
-    <% end %>
+      <% if !profile.contact%>
+        <div class="alert alert-danger" role="alert">
+          you haven't create contact yet please add contact to finalize your profile
+          <%= link_to "Add contact to this profile", "contacts/new/#{profile.id}",:class => "btn btn-outline-primary btn-sm p-1 mt-1"%>
+        </div>
+      <% else%>
+        <div class="card">
+          <div class="card-header">
+            <h4>Contact</h4>
+          </div>
+          <div class="card-body">
+            <div class="row ml-1">
+              <span class="card-title p mr-1 ">Email: </span>
+              <span class="card-text p"><%=profile.contact.email%></span>
+            </div>
+            <div class="row ml-1">
+              <span class="card-title p mr-1"> Address: </span>
+              <span class="card-text p"><%=profile.contact.full_address%></span>
+            </div>
+            <div class="row ml-1">
+              <span class="card-title p mr-1">Mobile: </span>
+              <span class="card-text p"><%=profile.contact.mobile_number%></span>
+            </div>
+            <div class="row ml-1">
+              <span class="card-title p mr-1">Landline: </span>
+              <span class="card-text p"><%=profile.contact.landline_number%></span>
+            </div>
+            <div class="row p-4">
+              <%= link_to "edit profile contact",edit_contact_path(profile.contact.id), :class => "btn btn-outline-primary btn-sm"%>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <%# add photos/gallery to this profile%>
+      <% if profile.logo_image.attached?%>
+        <div class="card">
+          <div class="card-header">
+            Logo
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="image-container">
+                <%= image_tag profile.logo_image,  width: "150px",height:"150px"%>
+                <%= link_to 'x', "image/#{ profile.logo_image.id}/delete", method: :delete, data: { confirm: 'Are you sure?' },:class => "btn btn-outline-danger btn-sm image_btn" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% else%>
+        <div class="alert alert-warning" role="alert">
+          No Logo image for this profile
+          <%= render 'business_profiles/logo_form', business_profile: profile %>
+        </div>
+      <%end%>
+      <!-- end logo -->
+      <% if profile.images.attached?%>
+        <div class="card">
+          <div class="card-header">
+            Project Gallery  
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <% profile.images.each do |image| %>
+                <div class="image-container">
+                  <%= image_tag image, width: "120px",height:"120px", class:"mr-1 ml-1"%>
+                  <%= link_to 'x', "image/#{image.id}/delete", method: :delete, data: { confirm: 'Are you sure?' },:class => "btn btn-outline-danger btn-sm image_btn" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <%= render 'business_profiles/image_form', business_profile: profile %>
+        </div>
+      <% else%>
+        <div class="alert alert-warning" role="alert">
+          No Project Gallery image for this profile
+          <%= render 'business_profiles/image_form', business_profile: profile %>
+        </div>
+      <%end%>
+    </div>
     <br>
-    <hr><br>
   <% end %>
-  <!-- End loop -->
 </div>
-
- <%= render "layouts/shared/stripe_form" %>
-
+<!-- End loop Profile -->
+<%= render "stripe_form" %>

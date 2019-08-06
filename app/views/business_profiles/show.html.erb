@@ -30,12 +30,15 @@
       <br>
       <div class="photo-area">
         <h3 class="alert-secondary p-2">Gallery</h3>
-        <p> Avatar </p>
-            <% if @business_profile.images.attached?%>
-    <%= image_tag @business_profile.images.first%>
-    <% else%>
-    <p> No image for this profile</p>
-    <%end%>
+        <% if @business_profile.images.attached?%>
+          <div class="row container mx-auto mb-2">
+            <% @business_profile.images.each do |image|%>
+              <%= image_tag image, width:"50%"%>
+            <% end %>
+          </div>
+        <% else%>
+          <p> No image for this profile</p>
+        <%end%>
       </div>
     </div>
     <div class="contact-details col-lg-6 col-sm-12">
