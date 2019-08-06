@@ -7,7 +7,14 @@ class MembershipsController < ApplicationController
     def create
         @membership = Membership.new
         @membership.business_profile_id = membership_params[:business_profile_id]
+        @membership.start_date = membership_params[:start_date]
+        @membership.exp_date = membership_params[:exp_date]
         @membership.save!
+    end
+
+    def edit
+      @membership = Membership.find(params[:id])
+      @business_profile = @membership.business_profile
     end
     
 
@@ -21,7 +28,7 @@ class MembershipsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def membership_params
-    params.require(:membership).permit(:business_profile_id)
+    params.require(:membership).permit(:business_profile_id, :start_date, :exp_date)
   end
 
 end

@@ -50,7 +50,12 @@
     <%# add photos/gallery to this profile%>
     <%= link_to "Add business logo and gallery photos to this profile", "galleries/new/#{profile.id}"%>
     <p><%= link_to "Manage your existing pohotos", "galleries/edit/#{profile.id}"%></p>
-    <p><%= link_to "Add Subscription - no links", "memberships/new/#{profile.id}"%></p>
+    
+    <p><% if profile.membership != nil%>
+    <p><%= link_to "Extend Subscription", edit_membership_path(profile.membership)%></p>
+    <p><% else%>
+  <p><%= link_to "Start Subscription", "memberships/new/#{profile.id}"%></p>
+  <%end%>
     <p><strong>Logo Space</strong></p>
     <% if profile.logo_image.attached?%>
     <%= image_tag profile.logo_image%>
