@@ -1,7 +1,7 @@
 <div class="home-nav">
   <%= render 'nav_common' %>
 </div>
-<div class="container p-5 mt-5">
+<div class="container p-4">
   <div class="badge-info display-4 p-3 text-center">
     <h3><%= @business_profile.business_name%>  : 
       <% BusinessProfileTrade.where(business_profile_id:@business_profile.id).each do |item|%>

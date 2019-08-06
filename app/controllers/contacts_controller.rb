@@ -49,7 +49,7 @@ class ContactsController < ApplicationController
   def update
     if !edit_contact_params
       respond_to do |format|
-        format.html { redirect_to "/contacts/#{params[:id]}/edit/", notice: "Address not exist" }
+        format.html { redirect_to "/contacts/#{params[:id]}/edit/", alert: "Address not exist" }
       end
     else
       respond_to do |format|
