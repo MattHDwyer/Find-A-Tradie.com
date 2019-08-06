@@ -5,20 +5,21 @@ class HomeController < ApplicationController
   def search
     @result = []
     @trade_search = []
-    @trade_search = params[:trade]
+    @trade_search = params[:trade] if params[:trade]
     location = Geocoder.search(params[:location])
     search_locate = location.find { |l| l.country == "Australia" }
-    # @search_lat = search_locate.coordinates.first
-    # @search_lon = search_locate.coordinates.last
-
-    if !@trade_search.empty?
+    @search_locate_coordinates = search_locate.coordinates
+    @search_locate_display = search_locate.display_name
+    if @trade_search.length > 0
       @trade_search.each do |t|
         profile = Trade.find(t).business_profiles.all
         profile.each do |p|
-          lat = p.contact.latitude
-          lon = p.contact.longitude
-          distance = Geocoder::Calculations.distance_between [lat, lon], search_locate.coordinates
-          @result << p if distance.to_f < 30
+          if p.contact
+            lat = p.contact.latitude
+            lon = p.contact.longitude
+            distance = Geocoder::Calculations.distance_between [lat, lon], @search_locate_coordinates
+            @result << p if distance.to_f < 30
+          end
         end
       end
     end

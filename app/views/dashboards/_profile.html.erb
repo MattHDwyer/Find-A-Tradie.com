@@ -1,6 +1,6 @@
-<div class="container p-5 ">
+<div class="container">
   <blockquote class="blockquote">
-    <p class="p-2 mt-4 display-4  badge-info font-n"> Welcome to your Dashboard.</p>
+    <p class="p-2 display-4  badge-info font-n"> Welcome to your Dashboard.</p>
     <footer class="blockquote-footer"><%=  @user.first_name%>&nbsp <%= @user.last_name%>
       , <%=@user.email%></footer>
   </blockquote>
@@ -82,8 +82,8 @@
         </div>
       <% end %>
       <%# add photos/gallery to this profile%>
-      <% if profile.logo_image.attached?%>
-        <div class="card">
+      <div class="card">
+        <% if profile.logo_image.attached?%>
           <div class="card-header">
             Logo
           </div>
@@ -95,16 +95,16 @@
               </div>
             </div>
           </div>
-        </div>
-      <% else%>
-        <div class="alert alert-warning" role="alert">
-          No Logo image for this profile
-          <%= render 'business_profiles/logo_form', business_profile: profile %>
-        </div>
-      <%end%>
+        <% else%>
+          <div class="alert alert-warning card-body" role="alert">
+            No Logo image for this profile
+            <%= render 'business_profiles/logo_form', business_profile: profile %>
+          </div>
+        <%end%>
+      </div>
       <!-- end logo -->
-      <% if profile.images.attached?%>
-        <div class="card">
+      <div class="card">
+        <% if profile.images.attached?%>
           <div class="card-header">
             Project Gallery  
           </div>
@@ -117,15 +117,15 @@
                 </div>
               <% end %>
             </div>
+            <%= render 'business_profiles/image_form', business_profile: profile %>
           </div>
-          <%= render 'business_profiles/image_form', business_profile: profile %>
-        </div>
-      <% else%>
-        <div class="alert alert-warning" role="alert">
-          No Project Gallery image for this profile
-          <%= render 'business_profiles/image_form', business_profile: profile %>
-        </div>
-      <%end%>
+        <% else%>
+          <div class="alert alert-warning" role="alert">
+            No Project Gallery image for this profile
+            <%= render 'business_profiles/image_form', business_profile: profile %>
+          </div>
+        <%end%>
+      </div>
     </div>
     <br>
   <% end %>

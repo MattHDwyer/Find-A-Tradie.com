@@ -31,10 +31,13 @@ body {
 }
 
 .alert {
+  position: absolute;
   color: red;
+  z-index: 1;
 }
 
 .notice {
+  position: absolute;
   color: black;
   z-index: 1;
   display: flex;
