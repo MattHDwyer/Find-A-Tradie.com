@@ -31,7 +31,7 @@ body {
 }
 
 .alert {
-  position: absolute;
+  position: relative;
   color: red;
   z-index: 1;
 }
@@ -41,5 +41,4 @@ body {
   color: black;
   z-index: 1;
   display: flex;
-  position: absolute;
 }

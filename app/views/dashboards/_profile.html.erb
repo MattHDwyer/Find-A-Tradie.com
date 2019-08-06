@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container  ">
   <blockquote class="blockquote">
-    <p class="p-2 display-4  badge-info font-n"> Welcome to your Dashboard.</p>
+    <p class="p-2 mt-3 display-4  badge-info font-n"> Welcome to your Dashboard.</p>
     <footer class="blockquote-footer"><%=  @user.first_name%>&nbsp <%= @user.last_name%>
       , <%=@user.email%></footer>
   </blockquote>
@@ -49,9 +49,11 @@
         </div>
       </div>
       <% if !profile.contact%>
-        <div class="alert alert-danger" role="alert">
-          you haven't create contact yet please add contact to finalize your profile
-          <%= link_to "Add contact to this profile", "contacts/new/#{profile.id}",:class => "btn btn-outline-primary btn-sm p-1 mt-1"%>
+        <div class="card-body">
+          <div class="p-2 alert-danger" role="alert">
+            you haven't create contact yet please add contact to finalize your profile
+            <%= link_to "Add contact to this profile", "contacts/new/#{profile.id}",:class => "btn btn-outline-primary btn-sm p-1 mt-1"%>
+          </div>
         </div>
       <% else%>
         <div class="card">
@@ -82,8 +84,8 @@
         </div>
       <% end %>
       <%# add photos/gallery to this profile%>
-      <div class="card">
-        <% if profile.logo_image.attached?%>
+      <% if profile.logo_image.attached?%>
+        <div class="card">
           <div class="card-header">
             Logo
           </div>
@@ -95,16 +97,18 @@
               </div>
             </div>
           </div>
-        <% else%>
-          <div class="alert alert-warning card-body" role="alert">
+        </div>
+      <% else%>
+        <div class="card-body">
+          <div class="p-2 alert-warning" role="alert">
             No Logo image for this profile
             <%= render 'business_profiles/logo_form', business_profile: profile %>
           </div>
-        <%end%>
-      </div>
+        </div>
+      <%end%>
       <!-- end logo -->
-      <div class="card">
-        <% if profile.images.attached?%>
+      <% if profile.images.attached?%>
+        <div class="card">
           <div class="card-header">
             Project Gallery  
           </div>
@@ -117,18 +121,20 @@
                 </div>
               <% end %>
             </div>
-            <%= render 'business_profiles/image_form', business_profile: profile %>
           </div>
-        <% else%>
-          <div class="alert alert-warning" role="alert">
+          <%= render 'business_profiles/image_form', business_profile: profile %>
+        </div>
+      <% else%>
+        <div class="card-body">
+          <div class="p-2 alert-warning" role="alert">
             No Project Gallery image for this profile
             <%= render 'business_profiles/image_form', business_profile: profile %>
           </div>
-        <%end%>
-      </div>
+        </div>
+      <%end%>
     </div>
     <br>
   <% end %>
 </div>
 <!-- End loop Profile -->
-<%= render "stripe_form" %>
+<%# <%= render "stripe_form" %> %>

@@ -2,29 +2,31 @@
   <%= render 'nav' %>
 </div>
 <div class="jumbotron jumbotron-fluid p-1">
-  <div class="container ">
-    <span class="badge badge-warning display-2 mt-1 p-2">Result : <%= @result.length %></span>
-    <span class="badge badge-info p-2 ml-2">Search for  
+  <div class="container alert-secondary p-1 text-center">
+    <span class="badge badge-info p-2 mb-1">Search for  
       <% @trade_search.each do |trade| %>
-        <%= Trade.find(trade.to_i).trade_name %>
+        (<%= Trade.find(trade.to_i).trade_name %>)
         &nbsp
       <% end %>
       in <%= @search_locate_display %></span>
-    <%= link_to "Search again", "/", method: :get ,class: "btn btn-primary p-0"%>
+    <div class="container">
+      <span class="badge badge-warning display-2 mt-1 mb-1 p-2">Result : <%= @result.length %></span>
+      <%= link_to "Search again", "/", method: :get ,class: "btn btn-primary mt-1 mb-1"%>
+    </div>
   </div>
 </div>
-<div class=" container mx-auto">
-  <div class ="row">
+<div class=" container ">
+  <div class ="row ml-1 mr-1">
     <% @result.each do |profile| %>
-      <div class="card col-lg-5 col-sm-12 mr-auto  mb-4">
+      <div class="card col-lg-5 col-sm-12 mr-auto mb-4">
         <div class="card-header">
           <% BusinessProfileTrade.where(business_profile_id:profile.id).each do |item|%>
             <span class="badge badge-success p-1"><%= item.trade.trade_name %></span>
           <% end %>
           <% if  profile.ratings != [] %>
-            <span class="badge badge-danger"><small>average rating : <%= get_average_star(profile.ratings)  %></small></span>
+            <span class="badge badge-danger p-1"><small>average rating : <%= get_average_star(profile.ratings)  %></small></span>
           <% end %>
-          <span class="badge badge-warning"><small>distance: <%=  ((Geocoder::Calculations.distance_between [profile.contact.latitude, profile.contact.longitude], @search_locate_coordinates) * 1.6 ).round(0) %> km </small></span>
+          <span class="badge badge-warning p-1"><small>With in: <%=  ((Geocoder::Calculations.distance_between [profile.contact.latitude, profile.contact.longitude], @search_locate_coordinates) * 1.6 ).round(0) %> km </small></span>
         </div>
         <div class="card-body">
           <div class="row">
@@ -37,7 +39,7 @@
             </div>
           </div>
           <div class="row p-2">
-            <%= link_to 'Show', profile , :class => "btn btn-primary p-2 w-100"%>
+            <%= link_to 'View Profile', profile , :class => "btn btn-primary p-2 w-100"%>
           </div>
         </div>
       </div>
