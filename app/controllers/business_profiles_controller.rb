@@ -33,7 +33,7 @@ class BusinessProfilesController < ApplicationController
           trade_params.each { |t|
             BusinessProfileTrade.create! ({ business_profile: BusinessProfile.find(b_id), trade: t })
           }
-          format.html { redirect_to @business_profile, notice: "Business profile was successfully created." }
+          format.html { redirect_to "/dashboards", notice: "Business profile was successfully created." }
           format.json { render :show, status: :created, location: @business_profile }
         else
           format.html { render :new }
@@ -58,7 +58,7 @@ class BusinessProfilesController < ApplicationController
     else
       respond_to do |format|
         if @business_profile.update(business_profile_params)
-          format.html { redirect_to @business_profile, notice: "Business profile was successfully updated." }
+          format.html { redirect_to "/dashboards", notice: "Business profile was successfully updated." }
           format.json { render :show, status: :ok, location: @business_profile }
         else
           format.html { render :edit }
@@ -76,6 +76,13 @@ class BusinessProfilesController < ApplicationController
       format.html { redirect_to "/dashboards", notice: "Business profile was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def image_delete
+    profile = BusinessProfile.find(ActiveStorage::Attachment.find(params[:id]).record_id)
+    authorize(profile)
+    ActiveStorage::Attachment.find(params[:id]).purge
+    redirect_to "/dashboards"
   end
 
   private
@@ -99,7 +106,7 @@ class BusinessProfilesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def business_profile_params
-    params.require(:business_profile).permit(:business_name, :business_profile_description, :australian_business_number, :logo_image, images:[]).merge!(:user_id => current_user.id)
+    params.require(:business_profile).permit(:business_name, :business_profile_description, :australian_business_number, :logo_image, images: []).merge!(:user_id => current_user.id)
   end
 
   def trade_params

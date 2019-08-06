@@ -1,1 +1,8 @@
-
+<div class="home-nav">
+  <%= render 'nav' %>
+</div>
+<div class="container p-4 mt-5">
+  <% @result.each do |profile| %>
+    <p> <%=profile.business_name%> </p>
+  <% end %>
+</div>
