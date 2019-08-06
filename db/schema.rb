@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_05_021048) do
+ActiveRecord::Schema.define(version: 2019_08_06_032133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,15 @@ ActiveRecord::Schema.define(version: 2019_08_05_021048) do
     t.index ["business_profile_id"], name: "index_contacts_on_business_profile_id"
   end
 
+  create_table "memberships", force: :cascade do |t|
+    t.date "start_date"
+    t.date "exp_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "business_profile_id"
+    t.index ["business_profile_id"], name: "index_memberships_on_business_profile_id"
+  end
+
   create_table "ratings", force: :cascade do |t|
     t.bigint "business_profile_id"
     t.integer "star_rating"
@@ -113,5 +122,6 @@ ActiveRecord::Schema.define(version: 2019_08_05_021048) do
   add_foreign_key "business_profile_trades", "trades"
   add_foreign_key "business_profiles", "users"
   add_foreign_key "contacts", "business_profiles"
+  add_foreign_key "memberships", "business_profiles"
   add_foreign_key "ratings", "business_profiles"
 end

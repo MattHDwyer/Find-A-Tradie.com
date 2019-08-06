@@ -78,6 +78,10 @@ class BusinessProfilesController < ApplicationController
     end
   end
 
+  def new_membership
+
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

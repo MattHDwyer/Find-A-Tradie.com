@@ -1,0 +1,27 @@
+<p> Business Profile ID: <% @business_profile.id  %></p>
+<p> Business Name:<% @business_profile.business_name%></p>
+
+<p> Lisiting starts on: </p>
+<p> Listing ends on: </p>
+
+<%= form_for @membership, url:memberships_path do |f| %>
+
+  <%= f.text_field :business_profile_id, value:@business_profile.id%>
+
+
+<h2> Choose one of the following three option to start or extend your listing </h2>
+
+
+<%= check_box_tag(:pet_dog) %>
+<%= label_tag(:pet_dog, "30 Days Option") %>
+
+
+<%= check_box_tag(:pet_dog) %>
+<%= label_tag(:pet_dog, "60 Days Option") %>
+
+
+<%= check_box_tag(:pet_cat) %>
+<%= label_tag(:pet_cat, "90 Days Option") %>
+
+  <%= f.submit "Confirm" %>
+<% end %>
