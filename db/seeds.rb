@@ -10,7 +10,8 @@ Trade.create ([
   { trade_name: "Electrician", trade_description: "fixing your wiring etc" },
   { trade_name: "Plummer", trade_description: "water etc" },
   { trade_name: "Painter", trade_description: "color etc" },
-  { trade_name: "Driver", trade_description: "drive etc" },
+  { trade_name: "Tiler", trade_description: "drive etc" },
+  { trade_name: "Gardener", trade_description: "drive etc" },
 ])
 
 role = [
