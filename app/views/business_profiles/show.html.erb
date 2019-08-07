@@ -12,6 +12,10 @@
   <hr>
   <div class="row mx-auto">
     <div class="contact-details col-lg-6 col-sm-12">
+      <% if @business_profile.logo_image.attached?%>
+        <%= image_tag  @business_profile.logo_image, width:"300px", class:"mx-auto"%>
+      <% else %>
+      <% end %>
       <h3 class="alert-secondary p-2">Business Profile</h3>
       <ul class = "list-group list-group-flush">
         <li class="list-group-item ">
