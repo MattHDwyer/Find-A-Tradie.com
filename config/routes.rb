@@ -27,4 +27,7 @@ Rails.application.routes.draw do
   get "galleries/new/:id" => "galleries#new_image"
   get "galleries/edit/:id" => "galleries#edit_image"
   delete "/image/:id/delete" => "business_profiles#image_delete"
+
+  get "/memberships/new/:id" => "memberships#new"
+  
 end

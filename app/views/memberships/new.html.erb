@@ -6,7 +6,7 @@ Option 1 - Monthly
   Current Date
   <%= f.text_field :start_date, value:Date.current%>
   Ending Date
-  <%= f.text_field :exp_date, value:Date.current + 1.month%>  
+  <%= f.text_field :end_date, value:Date.current + 1.month%>  
   Business Profile
   <%= f.text_field :business_profile_id, value:@business_profile.id%>
    <%= f.submit "Confirm" %>
@@ -15,8 +15,8 @@ Option 2 - Quarterly
 <%= form_for @membership, url:memberships_path do |f| %>
   Starting Date
   <%= f.text_field :start_date, value:Date.current%>
-  Ending Date before extension
-  <%= f.text_field :exp_date, value:Date.current + 3.months%>  
+  Ending Date
+  <%= f.text_field :end_date, value:Date.current + 3.months%>  
   Business Profile
   <%= f.text_field :business_profile_id, value:@business_profile.id%>
    <%= f.submit "Confirm" %>
@@ -26,7 +26,7 @@ Option 3 - Yearly
   Current Date
   <%= f.text_field :start_date, value:Date.current%>
   Ending Date
-  <%= f.text_field :exp_date, value:Date.current + 12.months%>  
+  <%= f.text_field :end_date, value:Date.current + 12.months%>  
   Business Profile
   <%= f.text_field :business_profile_id, value:@business_profile.id%>
    <%= f.submit "Confirm" %>

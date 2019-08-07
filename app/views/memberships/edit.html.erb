@@ -1,28 +1,33 @@
 <p> Business Profile ID: <%= @membership.business_profile_id  %></p>
 <p> Business Name:<%= @membership.business_profile.business_name%></p>
 <p> Lisiting starts on: <%= @membership.start_date%></p>
-<p> Listing ends on: <%= @membership.exp_date%></p>
+<p> <strong>Listing ends on:</strong><%= @membership.end_date%></p>
+
 Option 1 - Extend for 1 month
-<%= form_for @membership, url:memberships_path do |f| %>
+<%= form_for @membership, url: membership_path(@membership) do |f| %>
   New Ending Date after renewal will be:
-  <%= f.text_field :exp_date, value:@membership.exp_date + 1.months%>  
+  <%= f.text_field :end_date, value:@membership.end_date + 1.months%>  
   Business Profile
   <%= f.text_field :business_profile_id, value:@business_profile.id%>
    <%= f.submit "Confirm" %>
 <%end%>
+
+
 Option 2 - Extend for 3 month
-<%= form_for @membership, url:memberships_path do |f| %>
+<%= form_for @membership, url:membership_path(@membership)do |f| %>
  
   New Ending Date after renewal will be:
-  <%= f.text_field :end_date, value:@membership.exp_date + 3.months%>  
+  <%= f.text_field :end_date, value:@membership.end_date + 3.months%>  
   Business Profile
   <%= f.text_field :business_profile_id, value:@business_profile.id%>
    <%= f.submit "Confirm" %>
 <%end%>
+
+
 Option 3 - Extend for 12 month
-<%= form_for @membership, url:memberships_path do |f| %>
+<%= form_for @membership, url:membership_path(@membership) do |f| %>
   New Ending Date after renewal will be:
-  <%= f.text_field :end_date, value:@membership.exp_date + 12.months%>  
+  <%= f.text_field :end_date, value:@membership.end_date + 12.months%>  
   Business Profile
   <%= f.text_field :business_profile_id, value:@business_profile.id%>
    <%= f.submit "Confirm" %>
