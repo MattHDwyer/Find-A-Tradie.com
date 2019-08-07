@@ -1,14 +1,14 @@
 <% if !current_user %>
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
+      <li class="breadcrumb-item">   <a href="javascript:history.back()" data-method="get">Go Back</a></li>
       <li class="breadcrumb-item"> <%= link_to "Home", "/", {method: :get} %></li>
-      <li class="breadcrumb-item">   <a href="javascript:history.back()">Go Back</a></li>
     </ol>
   </nav>
 <% else %>
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item">   <a href="javascript:history.back()">Go Back</a></li>
+      <li class="breadcrumb-item">   <a href="javascript:history.back()"  data-method="get">Go Back</a></li>
       <li class="breadcrumb-item"> <%= link_to "Home", "/", {method: :get} %></li>
       <li class="breadcrumb-item"> <%= link_to "Your Profile", "/dashboards", {method: :get} %></li>
       <li class="breadcrumb-item"> <%= link_to "Sign out", destroy_user_session_path, {method: :delete} %></li>

@@ -60,11 +60,11 @@ ActiveRecord::Schema.define(version: 2019_08_05_021048) do
     t.string "mobile_number"
     t.string "landline_number"
     t.string "full_address"
+    t.float "latitude"
+    t.float "longitude"
     t.bigint "business_profile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "longitude"
-    t.float "latitude"
     t.index ["business_profile_id"], name: "index_contacts_on_business_profile_id"
   end
 

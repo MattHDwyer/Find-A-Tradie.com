@@ -4,12 +4,14 @@ class ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.json
   def index
+    redirect_to "/dashboards"
     @contacts = Contact.all
   end
 
   # GET /contacts/1
   # GET /contacts/1.json
   def show
+    redirect_to "/dashboards"
   end
 
   # GET /contacts/new
@@ -26,12 +28,13 @@ class ContactsController < ApplicationController
   # POST /contacts
   # POST /contacts.json
   def create
-    if !contact_params
+    cp = contact_params
+    if !cp
       respond_to do |format|
         format.html { redirect_to "/contacts/new/#{params[:id]}", notice: "Address not exist" }
       end
     else
-      @contact = Contact.new(contact_params)
+      @contact = Contact.new(cp)
       respond_to do |format|
         if @contact.save
           format.html { redirect_to "/dashboards", notice: "Contact was successfully created." }
@@ -47,13 +50,15 @@ class ContactsController < ApplicationController
   # PATCH/PUT /contacts/1
   # PATCH/PUT /contacts/1.json
   def update
-    if !edit_contact_params
+    cp = edit_contact_params
+    if !cp
       respond_to do |format|
         format.html { redirect_to "/contacts/#{params[:id]}/edit/", alert: "Address not exist" }
       end
     else
       respond_to do |format|
-        if @contact.update(edit_contact_params)
+        if @contact.update(cp)
+          @contact.save
           format.html { redirect_to "/dashboards", notice: "Contact was successfully updated." }
           format.json { render :show, status: :ok, location: @contact }
         else
@@ -96,8 +101,8 @@ class ContactsController < ApplicationController
       locates = Geocoder.search(x)
       if locates.length > 0
         locate = locates.find { |l| l.country == "Australia" }
-        p.merge!(:latitude => locate.coordinates.first)
         p.merge!(:longitude => locate.coordinates.last)
+        p.merge!(:latitude => locate.coordinates.first)
         return p
       else
         false
@@ -118,8 +123,8 @@ class ContactsController < ApplicationController
       locates = Geocoder.search(x)
       if locates.length > 0
         locate = locates.find { |l| l.country == "Australia" }
-        p.merge!(:latitude => locate.coordinates.first)
         p.merge!(:longitude => locate.coordinates.last)
+        p.merge!(:latitude => locate.coordinates.first)
         return p
       else
         false

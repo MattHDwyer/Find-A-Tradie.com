@@ -18,22 +18,22 @@
       <div class="card">
         <div class="card-header">
           <% BusinessProfileTrade.where(business_profile_id:profile.id).each do |item|%>
-            <span class="badge badge-success p-1"><%= item.trade.trade_name %></span>
+            <span class="badge badge-success p-2"><%= item.trade.trade_name %></span>
           <% end %>
         </div>
         <div class="card-body">
           <div class="row p-2">
             <div class="col">
-              <span class="card-title h5 ">Business Name: </span>
+              <span class="card-title h6 ">Business Name: </span>
               <span class="card-text p"><%=profile.business_name%></span>
             </div>
             <div class="col">
-              <span class="card-title h5">ABN: </span>
+              <span class="card-title h6">ABN: </span>
               <span class="card-text p"><%=profile.australian_business_number%></span>
             </div>
           </div>
           <div class="p-2">
-            <span class="card-title h5">Description: </span>
+            <span class="card-title h6">Description: </span>
           </div>
           <div class="description p-2">
             <span class="card-text p"><%=profile.business_profile_description%></span>
@@ -58,7 +58,7 @@
       <% else%>
         <div class="card">
           <div class="card-header">
-            <h4>Contact</h4>
+            <h5>Contact</h5>
           </div>
           <div class="card-body">
             <div class="row ml-1">
@@ -137,4 +137,4 @@
   <% end %>
 </div>
 <!-- End loop Profile -->
-<%# <%= render "stripe_form" %> %>
+<%# <%= render "stripe_form" %>
