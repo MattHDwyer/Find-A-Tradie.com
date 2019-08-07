@@ -4,12 +4,14 @@ class RatingsController < ApplicationController
   # GET /ratings
   # GET /ratings.json
   def index
+    redirect_to "/"
     @ratings = Rating.all
   end
 
   # GET /ratings/1
   # GET /ratings/1.json
   def show
+    redirect_to "/"
   end
 
   # GET /ratings/new
