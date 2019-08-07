@@ -4,10 +4,11 @@ Rails.application.routes.draw do
   get "contacts/new/:id" => "contacts#new"
   resources :contacts
   resources :dashboards
+  resources :memberships
 
-  # devise part below
+  # stripe part below
   resources :charges
-  # devise part ends
+  # stripe part ends
 
   devise_for :users, :controllers => { :registrations => "registrations" }
 
