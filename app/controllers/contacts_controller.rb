@@ -101,9 +101,12 @@ class ContactsController < ApplicationController
       locates = Geocoder.search(x)
       if locates.length > 0
         locate = locates.find { |l| l.country == "Australia" }
-        p.merge!(:longitude => locate.coordinates.last)
-        p.merge!(:latitude => locate.coordinates.first)
-        return p
+        if locate
+          p[:full_address] = locate.display_name
+          p.merge!(:longitude => locate.coordinates.last)
+          p.merge!(:latitude => locate.coordinates.first)
+          return p
+        end
       else
         false
       end
@@ -113,6 +116,7 @@ class ContactsController < ApplicationController
         false
       end
     end
+    false
   end
 
   def edit_contact_params
@@ -123,14 +127,18 @@ class ContactsController < ApplicationController
       locates = Geocoder.search(x)
       if locates.length > 0
         locate = locates.find { |l| l.country == "Australia" }
-        p.merge!(:longitude => locate.coordinates.last)
-        p.merge!(:latitude => locate.coordinates.first)
-        return p
+        if locate
+          p[:full_address] = locate.display_name
+          p.merge!(:longitude => locate.coordinates.last)
+          p.merge!(:latitude => locate.coordinates.first)
+          return p
+        end
       else
         false
       end
     else
       false
     end
+    false
   end
-end
+end #end class

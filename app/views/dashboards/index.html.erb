@@ -1,6 +1,7 @@
 <% if !current_user %>
   <div class="container">
     <h1>Something Went wrong!!</h1>
+    <p class="alert"><%= alert %></p>
     <%= link_to "return to home", "/", {method: :get} %>
   </div>
 <% else %>
