@@ -46,3 +46,29 @@ $mainblue: #0275d8;
   }
 }
 //end
+
+.category {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.img {
+  box-sizing: border-box;
+  border: 1px solid #0275d8;
+  border-radius: 10px;
+}
+
+.category-text {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 84%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  color: #0275d8;
+}
