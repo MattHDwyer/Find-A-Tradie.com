@@ -44,7 +44,11 @@
             <%= link_to 'Preview', profile , :class => "btn btn-outline-primary btn-sm p-1 mt-1"%>
             <%= link_to 'Edit', edit_business_profile_path(profile),:class => "btn btn-outline-info btn-sm p-1 mt-1", method: :get  %>
             <%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' },:class => "btn btn-outline-danger btn-sm p-1 mt-1" %>
-            <%= link_to 'Manage Subscription', profile, :class => "btn btn-outline-success btn-sm p-1 mt-1" %>
+              <p><% if profile.membership != nil%>
+                <p><%= link_to "Extend Subscription", edit_membership_path(profile.membership)%></p>
+                <p><% else%>
+                <p><%= link_to "Start Subscription", "memberships/new/#{profile.id}"%></p>
+                <%end%>
           </div>
         </div>
       </div>

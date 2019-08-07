@@ -4,10 +4,11 @@ Rails.application.routes.draw do
   get "contacts/new/:id" => "contacts#new"
   resources :contacts
   resources :dashboards
+  resources :memberships
 
-  # devise part below
+  # stripe part below
   resources :charges
-  # devise part ends
+  # stripe part ends
 
   devise_for :users, :controllers => { :registrations => "registrations" }
 
@@ -26,4 +27,7 @@ Rails.application.routes.draw do
   get "galleries/new/:id" => "galleries#new_image"
   get "galleries/edit/:id" => "galleries#edit_image"
   delete "/image/:id/delete" => "business_profiles#image_delete"
+
+  get "/memberships/new/:id" => "memberships#new"
+  
 end

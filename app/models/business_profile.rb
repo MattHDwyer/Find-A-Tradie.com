@@ -6,4 +6,5 @@ class BusinessProfile < ApplicationRecord
   has_many :ratings, dependent: :destroy
   has_many_attached :images
   has_one_attached :logo_image
+  has_one :membership, dependent: :destroy
 end

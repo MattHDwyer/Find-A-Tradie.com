@@ -1,0 +1,33 @@
+<p> Business Profile ID: <%= @business_profile.id  %></p>
+<p> Business Name:<%= @business_profile.business_name%></p>
+<p>Start your membership now!</p>
+Option 1 - Monthly 
+<%= form_for @membership, url:memberships_path do |f| %>
+  Current Date
+  <%= f.text_field :start_date, value:Date.current%>
+  Ending Date
+  <%= f.text_field :end_date, value:Date.current + 1.month%>  
+  Business Profile
+  <%= f.text_field :business_profile_id, value:@business_profile.id%>
+   <%= f.submit "Confirm" %>
+<%end%>
+Option 2 - Quarterly
+<%= form_for @membership, url:memberships_path do |f| %>
+  Starting Date
+  <%= f.text_field :start_date, value:Date.current%>
+  Ending Date
+  <%= f.text_field :end_date, value:Date.current + 3.months%>  
+  Business Profile
+  <%= f.text_field :business_profile_id, value:@business_profile.id%>
+   <%= f.submit "Confirm" %>
+<%end%>
+Option 3 - Yearly
+<%= form_for @membership, url:memberships_path do |f| %>
+  Current Date
+  <%= f.text_field :start_date, value:Date.current%>
+  Ending Date
+  <%= f.text_field :end_date, value:Date.current + 12.months%>  
+  Business Profile
+  <%= f.text_field :business_profile_id, value:@business_profile.id%>
+   <%= f.submit "Confirm" %>
+<%end%>
