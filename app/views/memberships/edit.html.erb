@@ -9,7 +9,7 @@ Option 1 - Extend for 1 month
   <%= f.text_field :end_date, value:@membership.end_date + 1.months%>  
   Business Profile
   <%= f.text_field :business_profile_id, value:@business_profile.id%>
-   <%= f.submit "Confirm" %>
+   <%= render partial: 'application/stripe_form', locals: {amount: 10}  %>
 <%end%>
 
 
@@ -20,7 +20,8 @@ Option 2 - Extend for 3 month
   <%= f.text_field :end_date, value:@membership.end_date + 3.months%>  
   Business Profile
   <%= f.text_field :business_profile_id, value:@business_profile.id%>
-   <%= f.submit "Confirm" %>
+  <%= render partial: 'application/stripe_form', locals: {amount: 20}  %>
+
 <%end%>
 
 
@@ -30,5 +31,6 @@ Option 3 - Extend for 12 month
   <%= f.text_field :end_date, value:@membership.end_date + 12.months%>  
   Business Profile
   <%= f.text_field :business_profile_id, value:@business_profile.id%>
-   <%= f.submit "Confirm" %>
+  <%= render partial: 'application/stripe_form', locals: {amount: 60}  %>
+
 <%end%>

@@ -1,7 +1,7 @@
 <p> Business Profile ID: <%= @business_profile.id  %></p>
 <p> Business Name:<%= @business_profile.business_name%></p>
 <p>Start your membership now!</p>
-Option 1 - Monthly 
+Option 1 - Monthly
 <%= form_for @membership, url:memberships_path do |f| %>
   Current Date
   <%= f.text_field :start_date, value:Date.current%>
@@ -9,8 +9,9 @@ Option 1 - Monthly
   <%= f.text_field :end_date, value:Date.current + 1.month%>  
   Business Profile
   <%= f.text_field :business_profile_id, value:@business_profile.id%>
-   <%= f.submit "Confirm" %>
+  <%= render partial:  'application/stripe_form', locals: {amount: 10}  %>
 <%end%>
+
 Option 2 - Quarterly
 <%= form_for @membership, url:memberships_path do |f| %>
   Starting Date
@@ -19,7 +20,7 @@ Option 2 - Quarterly
   <%= f.text_field :end_date, value:Date.current + 3.months%>  
   Business Profile
   <%= f.text_field :business_profile_id, value:@business_profile.id%>
-   <%= f.submit "Confirm" %>
+   <%= render partial:  'application/stripe_form', locals: {amount: 20}  %>
 <%end%>
 Option 3 - Yearly
 <%= form_for @membership, url:memberships_path do |f| %>
@@ -29,5 +30,6 @@ Option 3 - Yearly
   <%= f.text_field :end_date, value:Date.current + 12.months%>  
   Business Profile
   <%= f.text_field :business_profile_id, value:@business_profile.id%>
-   <%= f.submit "Confirm" %>
+ <%= render partial: 'application/stripe_form', locals: {amount: 60}  %>
+
 <%end%>
