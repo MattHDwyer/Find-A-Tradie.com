@@ -90,7 +90,7 @@
                 <%= rating.business_profile.created_at.to_s.split(" ").first%>
               </small>
             </blockquote>
-            <%if rating.business_profile.user == current_user  %>
+            <%if rating.business_profile.user.role == Role.find(1)  %>
               <%= link_to 'Destroy', rating, method: :delete, data: { confirm: 'Are you sure?' },:class => "btn btn-outline-danger btn-sm p-1 mt-1" %>
             <% end %>
           </div>

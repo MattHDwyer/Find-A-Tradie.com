@@ -3,11 +3,15 @@
   <button type="button" class="btn btn-primary m-1" data-toggle="modal" data-target="#modalForm">
     List your Profile
   </button>
-  <%= link_to "Home", "/", method: :get,class:"btn btn-secondary m-1" %>
+  <%= link_to  "/", method: :get,class:"btn btn-secondary m-1" do%>
+    <%= fa_icon('home') %> Home
+  <% end %>
 <% else %>
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"> <%= link_to "Home", "/", {method: :get} %></li>
+      <li class="breadcrumb-item"> <%= link_to  "/", method: :get do%>
+          <%= fa_icon('home') %> Home
+        <% end %></li>
       <li class="breadcrumb-item"> <%= link_to "Your Profile", "/dashboards", {method: :get} %></li>
       <li class="breadcrumb-item"> <%= link_to "Sign out", destroy_user_session_path, {method: :delete} %></li>
     </ol>

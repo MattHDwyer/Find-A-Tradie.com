@@ -52,7 +52,7 @@ class RatingsController < ApplicationController
   # DELETE /ratings/1
   # DELETE /ratings/1.json
   def destroy
-    if @rating.business_profile.user == current_user
+    if @rating.business_profile.user.role == Role.find(1)
       @rating.destroy
       redirect_to "/business_profiles/#{@rating.business_profile_id}"
     end

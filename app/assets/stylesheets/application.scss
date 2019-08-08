@@ -42,3 +42,10 @@ body {
   z-index: 1;
   display: flex;
 }
+
+.nav-tabs .nav-item .nav-link {
+  color: rgba(17, 17, 17, 0.863);
+}
+.nav-tabs .nav-item .active {
+  color: #1493a7 !important;
+}
