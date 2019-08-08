@@ -7,7 +7,10 @@
   <h4>Business Profile</h4>
   <hr>
   <div class="container">
-    <p><%= link_to "Create new profile", new_business_profile_path, :class => "btn btn-primary btn-sm", method: :get %></p>
+    <p><%= link_to  new_business_profile_path, :class => "btn btn-primary btn-sm", method: :get  do%>
+        <%= fa_icon('edit') %> Create new profile
+      <% end %>
+    </p>
     <!-- <p><%= link_to "Manage all existing profiles", business_profiles_path%></p>  consider admin only-->
     <!--<p><%= link_to "See my all Contact", business_profiles_path%></p>  consider admin only-->
     <!--<p><%= link_to "Manage your gallary - No pages linked"%></p> -->

@@ -12,6 +12,9 @@
     <div class="container">
       <span class="badge badge-warning display-2 mt-1 mb-1 p-2">Result : <%= @result.length %></span>
       <%= link_to "Search again", "/", method: :get ,class: "btn btn-primary mt-1 mb-1"%>
+      <br>
+      <%= link_to "sort by distance", "#{@url}&sort=distance", method: :get ,class: "btn btn-light mt-1 mb-1"%>
+      <%= link_to "sort by rating", "#{@url}&sort=rating", method: :get ,class: "btn btn-light mt-1 mb-1"%>
     </div>
   </div>
 </div>

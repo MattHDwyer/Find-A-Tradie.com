@@ -46,12 +46,14 @@ $mainblue: #0275d8;
   }
 }
 //end
-
 .category {
+  display: grid;
+  justify-content: center;
+}
+.category form {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
-  width: 80%;
+  justify-content: center;
   margin: 0 auto;
   margin-top: 10px;
   margin-bottom: 40px;
@@ -68,10 +70,9 @@ $mainblue: #0275d8;
   font-family: Open Sans;
   font-style: normal;
   font-weight: bold;
-  font-size: 25px;
-  line-height: 84%;
+  font-size: 1em;
+  line-height: 74%;
   display: flex;
   justify-content: center;
-  margin-top: 20px;
-  color: #0275d8;
+  margin-top: 10px;
 }

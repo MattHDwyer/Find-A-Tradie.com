@@ -4,7 +4,7 @@
 <div class="jumbotron jumbotron-fluid mb-0 pb-0 pt-3">
   <div class="container">
     <h1 class="display-4  ">
-      <span class="badge badge-info display-2 p-2">Find a Trade.com</span>
+      <span class="badge badge-info display-2 p-2"> Find a Trade.com </span>
     </h1>
     <p class="lead">&nbsp Find your local tradie </p>
     <br>
@@ -36,78 +36,30 @@
     </div>
   </form>
 </div>
-<div class="category">
-  <form action="/search/Melbourne" method="get">
-    <h2>Popular in Melbourne</h2>
-    <button type="submit" name="trade_all" value="2" class="m-2">
-      <%= image_tag "t5.jpg", class:"img",width:"150",height:"120"%>
-      <p class="category-text">Plumber</p>
-    </button>
-    <button type="submit" name="trade_all" value="5" class="m-2" >
-      <%= image_tag "t4.jpg", class:"img",width:"150",height:"120"%>
-      <p class="category-text">Gardener</p>
-    </button>
-    <button type="submit" name="trade_all" value="1"  class="m-2" >
-      <%= image_tag "t1.jpg", class:"img" ,width:"150",height:"120"%>
-      <p class="category-text">Electricain</p>
-    </button>
-    <button type="submit" name="trade_all" value="3" class="m-2">
-      <%= image_tag "t3.jpg", class:"img",width:"150",height:"120"%>
-      <p class="category-text">Painter</p>
-    </button>
-    <button type="submit" name="trade_all" value="4" class="m-2" >
-      <%= image_tag "t2.jpg", class:"img",width:"150",height:"120"%>
-      <p class="category-text">Tiler</p>
-    </button>
-  </form>
-</div>
-<div class="category">
-  <form action="/search/Sydney" method="get">
-    <h2>Popular in Sydney</h2>
-    <button type="submit" name="trade_all" value="2" class="m-2">
-      <%= image_tag "t5.jpg", class:"img",width:"150",height:"120"%>
-      <p class="category-text">Plumber</p>
-    </button>
-    <button type="submit" name="trade_all" value="5" class="m-2" >
-      <%= image_tag "t4.jpg", class:"img",width:"150",height:"120"%>
-      <p class="category-text">Gardener</p>
-    </button>
-    <button type="submit" name="trade_all" value="1"  class="m-2" >
-      <%= image_tag "t1.jpg", class:"img" ,width:"150",height:"120"%>
-      <p class="category-text">Electricain</p>
-    </button>
-    <button type="submit" name="trade_all" value="3" class="m-2">
-      <%= image_tag "t3.jpg", class:"img",width:"150",height:"120"%>
-      <p class="category-text">Painter</p>
-    </button>
-    <button type="submit" name="trade_all" value="4" class="m-2" >
-      <%= image_tag "t2.jpg", class:"img",width:"150",height:"120"%>
-      <p class="category-text">Tiler</p>
-    </button>
-  </form>
-</div>
-<div class="category">
-  <form action="/search/Adelaide" method="get">
-    <h2>Popular in Adelaide</h2>
-    <button type="submit" name="trade_all" value="2" class="m-2">
-      <%= image_tag "t5.jpg", class:"img",width:"150",height:"120"%>
-      <p class="category-text">Plumber</p>
-    </button>
-    <button type="submit" name="trade_all" value="5" class="m-2" >
-      <%= image_tag "t4.jpg", class:"img",width:"150",height:"120"%>
-      <p class="category-text">Gardener</p>
-    </button>
-    <button type="submit" name="trade_all" value="1"  class="m-2" >
-      <%= image_tag "t1.jpg", class:"img" ,width:"150",height:"120"%>
-      <p class="category-text">Electricain</p>
-    </button>
-    <button type="submit" name="trade_all" value="3" class="m-2">
-      <%= image_tag "t3.jpg", class:"img",width:"150",height:"120"%>
-      <p class="category-text">Painter</p>
-    </button>
-    <button type="submit" name="trade_all" value="4" class="m-2" >
-      <%= image_tag "t2.jpg", class:"img",width:"150",height:"120"%>
-      <p class="category-text">Tiler</p>
-    </button>
-  </form>
-</div>
+<div class="container category text-center">
+  <p class="shadow rounded">Popular in </p>
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#melbourne" role="tab"><%= fa_icon('flag') %>
+        Melbourne</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#sydney" role="tab"><%= fa_icon('flag') %>
+        Sydney</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#adeliade" role="tab"><%= fa_icon('flag') %>
+        Adeliade</a>
+    </li>
+  </ul>
+  <div class="tab-content category">
+    <div id="melbourne" class="tab-pane active fade show">
+      <%= render 'melbourne' %>
+    </div>
+    <div id="sydney" class="tab-pane fade">
+      <%= render 'sydney' %>
+    </div>
+    <div id="adeliade" class="tab-pane fade">
+      <%= render 'adeliade' %>
+    </div>
+  </div>
