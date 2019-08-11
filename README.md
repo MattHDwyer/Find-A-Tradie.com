@@ -1,4 +1,43 @@
-# README
+# README - Find-A-Tradie.com
+
+## About Find-A-Tradie.com:
+Find-A-Tradie.com is a search engine platform built to assist users in finding a tradesmen to complete the necessary works. Whilst this is inspired from sites such as Yellow Pages, the unique take on this site is that it's aim is to be heavily manipulated around the user reviews. This way encouraging users to search for and find the top rated tradies in their area. 
+
+## Tech Stack:
+* Front-end: HTML, ERB, CSS, SASS, Javascript
+* Backend: Ruby, Ruby on Rails
+* Database: POSTGRESQL Database with ActiveRecord
+* Deployment: Heroku
+
+## Configuration / Installation Instructions:
+1. Within your computer terminal, navigate the directory to where you want to install the application files and run 'git clone git@github.com:MattHDwyer/Find-A-Tradie.com.git'
+
+2. Run 'bundle install' to install the dependencies
+
+3. Run 'rails db:create' to create the database (Warning you must have POSTGRESQL installed!)
+
+4. Run 'rails db:migrate' to migrate the database
+
+5. Run 'rails s' to run the server in development mode
+
+6. In your web browser navigate to 'http://localhost:3000/' to view the site
+
+7. You may now use the site or Sign Up 
+
+## Features:
+* Search function for a certain Trade near your address
+* Secure Login, User Authentication and Authorisation
+* User profiles
+* Review of Business Profiles
+* Profile photo upload with AWS image Storage
+* Profile Membership upgrade with Stripe
+
+
+## Site map:
+![image](https://i.imgur.com/tL0Eflz.png)
+
+
+
 
 <h2>Description</h2>
 
@@ -305,6 +344,6 @@ use pundit gem to set up the policy.
 
 
 <h4> <em> 23. </em>Research what your legal obligations are in relation to handling user data. </h4>
-
-
-Good luck! & Have fun :)
+With the consistent threat of hackers and cyber threats, we have to take the Privacy Laws involving the legal obligations that regulate the collection, storing and provision of access and managemetn of personal information on all individuals very seriously. Whilst handling user data, the legal obligations are that we have to consider the threats that are out there that could compromise user data. We are obligated to protect the individual's files and the systems with authorisation and authentication. We've achieved this in our site through the use of the gem devise and pundit. <br>
+We should also be looking at ways to make sure that our virus protection is up to date on our serverside. <br>
+In addition, it is also important to develop a back up plan or a disaster recovery plan to ensure data recoverability in case of emergencies. This can be done by creating backups of multiple copies in secured multiple locations.
