@@ -44,7 +44,8 @@ Admin dashboard for the admin user to administer the site.
 Questions
 To demonstrate your knowledge you are required to answer a set of short questions. In your README.md file create a heading for each of the questions below and provide answers inline,
 
-* What is the need (i.e. challenge) that you will be addressing in your project?
+<h4> What is the need (i.e. challenge) that you will be addressing in your project? </h4>
+<p> The challenege that we looked to address in this project was helping people find tradesmen. We wanted to create a yellow pages type site that, but rather than companies just putting their information up and allowing users to search for them, we wanted users to also have an input. We have a ratings system on the site so that users can find not just any tradesmen, but the best tradesmen in their local area.</p>
 
 <p> <strong>a. team management</strong> </p>
 
@@ -86,7 +87,9 @@ A user can view the business profile and leave the comment.
 These CRUD operation can be done as designed require us carefully manages the instance variables and related params across the different pages is somehow chanllenging. And the whole process is complicated by the fact that we use scaffold genereated form partial in many cases.
 
 
-* Identify the problem you’re trying to solve by building this particular marketplace App? 
+<h4> Identify the problem you’re trying to solve by building this particular marketplace App? <h4>
+
+<p> The problem we're trying to solve, is to help people weed out the good and bad tradesmen. There's a small issue in Australia of tradesmen overpricing for their work and for the results to be terrible. By adding reviews and the chance for tradesmen to show off their own work, we hope this inspires the competitiveness in the industry and increases the standard of work completed. </p>
 
 The app is targeted to the people who want to use a simple and user-friend website to look for tradesmen information to get their household/business jobs done. 
 
@@ -107,30 +110,44 @@ Drawbacks of these site:
 
 
 * Why is it a problem that needs solving?
-Describe the project will you be conducting and how. your App will address the needs.
 
-* Describe the network infrastructure the App may be based on.
+<p> This is a problem that needs solving, because you can't be having people spending thousands and thousands of dollars on work around their house/business and being ripped off by people that are just out here to earn a quick buck. We want tradesmen to be held accountable for their work, as well as making sure the Australian people get good value for their money.</p>
 
-backend codes: Ruby
+<h4> Describe the project will you be conducting and how. your App will address the needs </h4>
 
+<p> We've created a search engine for users, so that they can find local tradesmen in their area. Users will input the type of trade they're looking for (which is provided by the site, they can only look for trades that are already provided) and also their location. 
+<br>
+The home page of the site will send the users straight to the search function. There will also be options for tradesmen to create an account and to sign up to the site, so that they can post their business. </p>
 
+<h4> Describe the network infrastructure the App may be based on. </h4>
 
-* Identify and describe the software to be used in your App.
-
-Figma: Wireframes and Visual Design
-Ruby libraries: Rails and related gems
-
-
-* Identify the database to be used in your App and provide a justification for your choice.
-
-* Identify and describe the production database setup (i.e. postgres instance).
+The site will be deployed onto Heroku. Heroku links with GitHub and passes the necessary code to be able to deploy the site. Heroku is a free service that allows users to store their code on a server so that when a user initiates a HTTP 'Get' Request for their site, the HTTP Response is the code that the developer has created.
 
 
+<h4> Identify and describe the software to be used in your App. </h4>
+Frameworks:
+* Ruby on Rails: A web-application framework written in ruby in conjunction with rails to create full-stack web applications. Ruby on Rails is a MVC (Model, View, Controller) framework that emphasises convention over configuration. Rails assists with the automation of time consuming code, when creating such things as routes, controllers, views and database migrations.
+
+Databases:
+* Postgres: A Relational Databse management system
+* Active Record: An ORM or Object Relational Mapping tool, which provides an interface between the tables in a  relational database.
+
+Version Control:
+* GitHub: GitHub is a source control tool which is allows for either solo or group projects to be developed.
+
+Deployment:
+* Heroku: Allows you to deploy web applications. It allows you to push directly from Gitub in a variety of different languages. 
 
 
+<h4> Identify the database to be used in your App and provide a justification for your choice. </h4>
+<p> We've decided to use a POSTGRESQL database for our site. The reason for this decision was because the deployment site that we're using (heroku) works best with POSTGRESQL databse sites. </p>
 
-* Describe the architecture of your App.
-Explain the different high-level components (abstractions) in your App.
+<h4> Identify and describe the production database setup (i.e. postgres instance). </h4>
+When we "rails new"'d for the first time, we added "-d postgresql". This created a local instance of a POSTGRESQL database. We then in the terminal, created the database with the code "rails db:create". After creating the database we were then able to run migrations through the database to create the tables via
+
+<h4> Describe the architecture of your App. </h4>
+
+<h4> Explain the different high-level components (abstractions) in your App. </h4>
 
 App is deployed in the website Heroku.
 The web framework we use is Rails 5.2.3.
@@ -138,37 +155,35 @@ Front End Language we use is : HTML with embedded Ruby. A little bit of javascri
 Styling language: Pure CSS and CSS Library bootscrap.
 A payment system: Stripe
 
+<h4> Detail any third party services that your App will use. </h4>
 
-* Detail any third party services that your App will use.
-
-AWS for storing the photos 
-Stripe to manage the payment windows
-Google Map/Earth API to provide the address/location information
-
-
-* Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb).
-
-Essentially, our purpose is to have a more user friendly version of yellow pages that focuses on the trademen industry. Therefore, site like Yellow Pages or Yelps will be definitely similar but much more complex than our site.
+    * AWS for storing the photos 
+    * Stripe to manage the payment windows
+    * GeoCoder Gem: Utilises the Google Map/Earth API to provide the address/location information
 
 
-* Discuss the database relations to be implemented.
+<h4> Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb). </h4>
 
-TBD
+Essentially, our purpose is to have a more user friendly version of yellow pages that focuses on the tradesmen industry. Therefore, site like Yellow Pages or Yelps will be definitely similar but much more complex than our site. Our site aims to be more simplistic than these sites and aims to have more of a user feedback than these sites may have.
 
+
+<h4> Discuss the database relations to be implemented. </h4>
+
+** insert screenshot of ERD
 
 
 
-* Describe your project’s models in terms of the relationships (active record associations) they have with each other.
+<h4> Describe your project’s models in terms of the relationships (active record associations) they have with each other. </h4>
 
-TBD
+** insert picture of ERD ** 
 
 
 
-* Provide your database schema design.
+<h4> Provide your database schema design. </h4>
 
 Pic
 
-* Provide User stories for your App.
+<h4> Provide User stories for your App. </h4>
 
 A visitor wants to look for a plumber to fix leakage problem of his sink tap. He comes to our site and enter his home location and quickly do a search. He finds a list of 100 plumbers within 10 km of his home. Then he narrows down the distance to 5km and sorts the lists based on the average rating of the business and finds the photos of that plumber's past projects. He carefully reads the comments left by other customer of that tradie. After he feels confident, he calls that tradie, arrange a job to him.
 
@@ -178,12 +193,12 @@ In his profile, he wants to add descriptions and photos to his business. He also
 
 
 
-* Provide Wireframes for your App.
+<h4> Provide Wireframes for your App. </h4>
 
 Pic
 
 
-* Describe the way tasks are allocated and tracked in your project.
+<h4> Describe the way tasks are allocated and tracked in your project. </h4>
 
 Discuss the project idea for first and half days.
 Wireframe design and completed in day2 and day3.
@@ -191,7 +206,7 @@ Preliminary design is completed in day 4.
 
 Team then split into two part:
 1. two people reasearch on the features we want have
-2. one person focus codes the actual view pages.
+2. one person focuses codes the actual view pages.
 
 Each day morning, discuss the progress so far. And lists the target we have in the trello board. 
 
@@ -199,7 +214,7 @@ Each night, the code is pushed into the github and a second person will merge hi
 
 
 
-* Discuss how Agile methodology is being implemented in your project.
+<h4> Discuss how Agile methodology is being implemented in your project. </h4>
 
 Our code development starts when the framework is done.
 When we are fine tuning the details of design. The view pages have been already finished based on the wireframe of the prelimary design.
@@ -207,19 +222,19 @@ When we are fine tuning the details of design. The view pages have been already 
 As long as the research of the new features are completed, we updated our existing code and let the new feature incorporated into our design. Then we do basically styling after each function can be achieved.
 
 
-* Provide an overview and description of your Source control process.
+<h4> Provide an overview and description of your Source control process. </h4>
 
 TBD
 
-* Provide an overview and description of your Testing process.
+<h4> Provide an overview and description of your Testing process. </h4>
 
 TBD
 
-* Discuss and analyse requirements related to information system security.
+<h4> Discuss and analyse requirements related to information system security. </h4>
 
 TBD
 
-* Discuss methods you will use to protect information and data.
+<h4> Discuss methods you will use to protect information and data. </h4>
 
 TBD
 
@@ -229,7 +244,7 @@ use pundit gem to set up the policy.
 
 
 
-* Research what your legal obligations are in relation to handling user data.
+<h4> Research what your legal obligations are in relation to handling user data. </h4>
 
 TBD
 
