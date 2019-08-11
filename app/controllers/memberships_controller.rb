@@ -25,6 +25,7 @@
           @membership.end_date = membership_params[:end_date]
           @membership.business_profile_id = membership_params[:business_profile_id]
           @membership.save!
+          raise
           redirect_to dashboards_path
         end
 

@@ -1,7 +1,7 @@
 <p> Business Profile ID: <%= @membership.business_profile_id  %></p>
 <p> Business Name:<%= @membership.business_profile.business_name%></p>
 <p> Lisiting starts on: <%= @membership.start_date%></p>
-<p> <strong>Listing ends on:</strong><%= @membership.end_date%></p>
+<p> <strong>Listing ends on: </strong><%= @membership.end_date%></p>
 
 Option 1 - Extend for 1 month
 <%= form_for @membership, url: membership_path(@membership) do |f| %>
@@ -9,9 +9,9 @@ Option 1 - Extend for 1 month
   <%= f.text_field :end_date, value:@membership.end_date + 1.months%>  
   Business Profile
   <%= f.text_field :business_profile_id, value:@business_profile.id%>
-   <%= render partial: 'application/stripe_form', locals: {amount: 10}  %>
+  
 <%end%>
-
+ <%= render partial: 'application/stripe_form', locals: {amount: 10}  %>
 
 Option 2 - Extend for 3 month
 <%= form_for @membership, url:membership_path(@membership)do |f| %>
@@ -20,9 +20,9 @@ Option 2 - Extend for 3 month
   <%= f.text_field :end_date, value:@membership.end_date + 3.months%>  
   Business Profile
   <%= f.text_field :business_profile_id, value:@business_profile.id%>
-  <%= render partial: 'application/stripe_form', locals: {amount: 20}  %>
-
+  
 <%end%>
+<%= render partial: 'application/stripe_form', locals: {amount: 20}  %>
 
 
 Option 3 - Extend for 12 month
@@ -31,6 +31,6 @@ Option 3 - Extend for 12 month
   <%= f.text_field :end_date, value:@membership.end_date + 12.months%>  
   Business Profile
   <%= f.text_field :business_profile_id, value:@business_profile.id%>
-  <%= render partial: 'application/stripe_form', locals: {amount: 60}  %>
-
 <%end%>
+
+ <%= render partial: 'application/stripe_form', locals: {amount: 60}  %>

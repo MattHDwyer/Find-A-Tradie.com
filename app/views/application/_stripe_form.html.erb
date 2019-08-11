@@ -7,13 +7,18 @@
         </div>
       <% end %>
     <label class="amount">
-      <span>Amount: <%= amount%></span>
+    <%@amount = amount%>
+      <span>Amount: <%= 100 * @amount%></span>
+      <%= label_tag(:amount, 'Amount:') %>
+      <%= text_field_tag(:amount, @amount) %>
     </label>
     </article>
     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
           data-description="Purchase Book"
-          data-amount="500"
-          data-locale="auto"></script>
+          data-amount="<%= 100 * @amount%>"
+          data-locale="auto"
+          data-currency="aud">
+          </script>
   <% end %>
 
