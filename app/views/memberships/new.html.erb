@@ -9,7 +9,7 @@ Option 1 - Monthly
   <%= f.text_field :end_date, value:Date.current + 1.month%>  
   Business Profile
   <%= f.text_field :business_profile_id, value:@business_profile.id%>
-  <%= render partial:  'application/stripe_form', locals: {amount: 10}  %>
+  <%= render partial:  'application/stripe_form', locals: {amount: 10, business_profile_id: @business_profile.id, start_date:Date.current, end_date: Date.current + 1.month}  %>
 <%end%>
 
 Option 2 - Quarterly
