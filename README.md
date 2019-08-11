@@ -162,8 +162,35 @@ A payment system: Stripe
 * Stripe to manage the payment windows <br>
 * GeoCoder Gem: Utilises the Google Map/Earth API to provide the address/location information<br>
 
-Full list of Gems/Dependencies:
-
+#### Full list of Gems/Dependencies:
+* ruby "2.5.2"
+* gem "rails", "~> 5.2.3"
+* gem "pg", ">= 0.18", "< 2.0"
+* gem "puma", "~> 3.11"
+* gem "sass-rails", "~> 5.0"
+* gem "uglifier", ">= 1.3.0"
+* gem "coffee-rails", "~> 4.2"
+* gem "turbolinks", "~> 5"
+* gem "jbuilder", "~> 2.5"
+* gem "devise"
+* gem "pundit"
+* gem "geocoder"
+* gem "bootsnap", ">= 1.1.0", require: false
+* gem 'stripe'
+* gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
+* gem "web-console", ">= 3.3.0"
+* gem "listen", ">= 3.0.5", "< 3.2"
+* gem "spring"
+* gem "spring-watcher-listen", "~> 2.0.0"
+* gem "capybara", ">= 2.15"
+* gem "selenium-webdriver"
+* gem "chromedriver-helper"
+* gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+* gem "jquery-rails"
+* gem "bootstrap", "~>4.0.0"
+* gem "font-awesome-rails"
+* gem "select2-rails"
+* gem "ausburbs"
 
 <h4><em> 11. </em> Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb). </h4>
 
