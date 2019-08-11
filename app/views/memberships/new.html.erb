@@ -1,35 +1,34 @@
-<p> Business Profile ID: <%= @business_profile.id  %></p>
-<p> Business Name:<%= @business_profile.business_name%></p>
+<div class="top-box">
+  <div class="title"> Business Profile ID: <%= @business_profile.id  %> </div>
+  <div class="title"> Business Name:<%= @business_profile.business_name%> </div>
+</div>
+
+
 <p>Start your membership now!</p>
-Option 1 - Monthly
+Option 1 - Monthly: Start now and renew every month.
+
 <%= form_for @membership, url:memberships_path do |f| %>
-  Current Date
-  <%= f.text_field :start_date, value:Date.current%>
-  Ending Date
-  <%= f.text_field :end_date, value:Date.current + 1.month%>  
-  Business Profile
-  <%= f.text_field :business_profile_id, value:@business_profile.id%>
-  <%= render partial:  'application/stripe_form', locals: {amount: 10, business_profile_id: @business_profile.id, start_date:Date.current, end_date: Date.current + 1.month}  %>
+  <%= f.hidden_field :start_date, value:Date.current%>
+  <%= f.hidden_field :end_date, value:Date.current + 1.month%>  
+  <%= f.hidden_field :business_profile_id, value:@business_profile.id%>
+  <%= render partial:  'application/stripe_form', locals: {amount: 10} %>
 <%end%>
 
-Option 2 - Quarterly
+Option 2 - Quarterly: Start now and renew every quarter.
 <%= form_for @membership, url:memberships_path do |f| %>
-  Starting Date
-  <%= f.text_field :start_date, value:Date.current%>
-  Ending Date
-  <%= f.text_field :end_date, value:Date.current + 3.months%>  
-  Business Profile
-  <%= f.text_field :business_profile_id, value:@business_profile.id%>
+  
+  <%= f.hidden_field :start_date, value:Date.current%>
+ 
+  <%= f.hidden_field :end_date, value:Date.current + 3.months%>  
+
+  <%= f.hidden_field :business_profile_id, value:@business_profile.id%>
    <%= render partial:  'application/stripe_form', locals: {amount: 20}  %>
 <%end%>
-Option 3 - Yearly
+Option 3 - Yearly: Start now and renew every year.
 <%= form_for @membership, url:memberships_path do |f| %>
-  Current Date
-  <%= f.text_field :start_date, value:Date.current%>
-  Ending Date
-  <%= f.text_field :end_date, value:Date.current + 12.months%>  
-  Business Profile
-  <%= f.text_field :business_profile_id, value:@business_profile.id%>
+  <%= f.hidden_field :start_date, value:Date.current%>
+  <%= f.hidden_field :end_date, value:Date.current + 12.months%>  
+  <%= f.hidden_field :business_profile_id, value:@business_profile.id%>
  <%= render partial: 'application/stripe_form', locals: {amount: 60}  %>
 
 <%end%>
