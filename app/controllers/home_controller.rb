@@ -21,7 +21,7 @@ class HomeController < ApplicationController
           profile = Trade.find(t.to_i).business_profiles.all
 
           profile.each do |p|
-            if p.contact
+            if p.contact && check_membership(p)
               lat = p.contact.latitude
               lon = p.contact.longitude
               distance = Geocoder::Calculations.distance_between [lat, lon], @search_locate_coordinates
@@ -54,7 +54,7 @@ class HomeController < ApplicationController
     @search_locate_display = "#{params[:state]}, Australia"
     profile = Trade.find(@trade_search.first).business_profiles.all
     profile.each { |p|
-      if p.contact
+      if p.contact && check_membership(p)
         lat = p.contact.latitude
         lon = p.contact.longitude
         distance = Geocoder::Calculations.distance_between [lat, lon], @search_locate_coordinates
@@ -71,5 +71,14 @@ class HomeController < ApplicationController
       count = count + r.star_rating.to_f
     }
     return (count / rate.length).round(1)
+  end
+
+  def check_membership(profile)
+    if profile.membership
+      if profile.membership.end_date >= Date.today
+        return true
+      end
+    end
+    false
   end
 end  #-----------class end
