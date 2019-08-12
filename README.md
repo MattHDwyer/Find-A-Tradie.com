@@ -295,7 +295,7 @@ In his profile, he wants to add a description and photos to his business profile
 - We populate the database with some seeded data and perform extensive CRUD operations using the seeded data to see whether the web app would behave as intended.
 
 - Besides, we manually input, delete, edit and update a lot of data to make sure the user flow happens as designed.<br>
-  Many bugs are found during our testing process. For example, we find our stripe button can update the subscription details, however, there is no backend payment info can be captured by the stripe platform.<br> Another example is that we found that Geocoder allow an user to enter a fake street number and in that case, our app allows an address without a street number stored in the database and this is an unwanted behaviour.
+  Many bugs are found during our testing process. For example, we find our stripe button can update the subscription details, however, there is no backend payment info can be captured by the stripe platform.<br> Another example is that we found that Geocoder allows an user to enter a fake street number and in that case, our app allows an address without a street number stored in the database and this is an unwanted behaviour.
 
 21. Discuss and analyse requirements related to information system security.
 
@@ -306,7 +306,8 @@ In his profile, he wants to add a description and photos to his business profile
 
 - Check if the usesr are matched with server database
 
-- In our app, most of the CRUD operations happens in relation to business profile.
+- In our app, most of the CRUD operations happens in relation to business profile, and a strong param is enforced everytime we create
+or update any business profiles attribute.
 
 23. Research what your legal obligations are in relation to handling user data.
 
