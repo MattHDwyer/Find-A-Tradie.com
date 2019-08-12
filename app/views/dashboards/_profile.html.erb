@@ -50,7 +50,7 @@
             <p><% if profile.membership != nil%>
                 <p><%= link_to "Extend Subscription", edit_membership_path(profile.membership)%></p>
                 <p><% else%>
-                  <p><%= link_to "Start Subscription", "memberships/new/#{profile.id}"%></p>
+                  <p><%= link_to "Start Subscription", "/memberships/new/#{profile.id}"%></p>
                 <%end%>
               </div>
             </div>

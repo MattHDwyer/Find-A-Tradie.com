@@ -1,41 +1,38 @@
-
-<p> Business Name: <%= @membership.business_profile.business_name%></p>
-<p> Business Profile ID: <%= @membership.business_profile_id  %></p>
-<p> Lisiting starts on: <%= @membership.start_date%></p>
-<p> <strong>Listing ends on: </strong><%= @membership.end_date%></p>
-
-
-<div class="container">
-
-<div class="options">
-  <strong>Option 1 - Extend for 1 month</strong>
-  <%= form_for @membership, url: membership_path(@membership) do |f| %>
-    New listing ending date after renewal will be: <%= @membership.end_date + 1.months%>
-    <%= f.hidden_field :end_date, value:@membership.end_date + 1.months%>  
-    <%= f.hidden_field :business_profile_id, value:@business_profile.id%>
-    <%= render partial: 'application/stripe_form', locals: {amount: 10}  %>
-  <%end%>
+<div class="container  mx-auto text-center">
+  <p> Business Name: <%= @membership.business_profile.business_name%></p>
+  <p> Business Profile ID: <%= @membership.business_profile_id  %></p>
+  <p> Lisiting starts on: <%= @membership.start_date%></p>
+  <p> <strong>Listing ends on: </strong><%= @membership.end_date%></p>
 </div>
- 
-
-  <div class="options"> 
-    Option 2 - Extend for 3 month
+<div class="d-flex justify-content-around p-2 row text-center">
+  <div class="border border-warning m-2 p-1 col-lg-3 col-sm-9">
+    <p class="badge badge-dark"> Option 1 - Extend for 1 month </p>
+    <br>
+    <%= form_for @membership, url: membership_path(@membership) do |f| %>
+      New listing ending date after renewal will be: <%= @membership.end_date + 1.months%>
+      <%= f.hidden_field :end_date, value:@membership.end_date + 1.months%>
+      <%= f.hidden_field :business_profile_id, value:@business_profile.id%>
+      <%= render partial: 'application/stripe_form', locals: {amount: 10}  %>
+    <%end%>
+  </div>
+  <div class="border border-info m-2 p-1 col-lg-3 col-sm-9">
+    <p class="badge badge-dark">Option 2 - Extend for 3 month</p>
+    <br>
     <%= form_for @membership, url:membership_path(@membership)do |f| %>
- 
       New listing ending date after renewal will be: <%= @membership.end_date + 3.months%>
-      <%= f.hidden_field :end_date, value:@membership.end_date + 3.months%>  
+      <%= f.hidden_field :end_date, value:@membership.end_date + 3.months%>
       <%= f.hidden_field :business_profile_id, value:@business_profile.id%>
       <%= render partial: 'application/stripe_form', locals: {amount: 20}  %>
     <%end%>
   </div>
-
-
-<div class="options"> 
-    Option 3 - Extend for 12 month
+  <div class="border border-danger m-2 p-1 col-lg-3 col-sm-9">
+    <p class="badge badge-dark">    Option 3 - Extend for 12 month </p>
+    <br>
     <%= form_for @membership, url:membership_path(@membership) do |f| %>
       New listing ending date after renewal will be: <%= @membership.end_date + 12.months%>
-      <%= f.hidden_field :end_date, value:@membership.end_date + 12.months%>  
+      <%= f.hidden_field :end_date, value:@membership.end_date + 12.months%>
       <%= f.hidden_field :business_profile_id, value:@business_profile.id%>
       <%= render partial: 'application/stripe_form', locals: {amount: 60}  %>
     <%end%>
- </div>
+  </div>
+</div>

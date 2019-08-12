@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 2019_08_07_033620) do
 
   create_table "ratings", force: :cascade do |t|
     t.bigint "business_profile_id"
+    t.string "user_name"
     t.integer "star_rating"
     t.text "comment"
     t.datetime "created_at", null: false
