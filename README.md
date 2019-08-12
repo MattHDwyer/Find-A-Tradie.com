@@ -69,6 +69,7 @@ In his profile, he wants to add a description and photos to his business profile
 
 - Figma
   - we start design it via figma and adapt how it look as we coding
+  https://www.figma.com/file/itEEYESDWsVwPzjxoLvwB9/Find-A-Tradie?node-id=35%3A8
 - Responsive design
   - we focus on making our app responsive
 
