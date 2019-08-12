@@ -86,7 +86,8 @@
               <%= rating.comment%>
             </div>
             <blockquote class="blockquote m-0 p-0">
-              <small>posted at :
+              <small>posted by : <strong><%= rating.user_name%></strong>
+                at
                 <%= rating.business_profile.created_at.to_s.split(" ").first%>
               </small>
             </blockquote>
