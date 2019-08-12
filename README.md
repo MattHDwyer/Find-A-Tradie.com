@@ -67,6 +67,8 @@ In his profile, he wants to add a description and photos to his business profile
 
 ### Planning Process
 
+- Pinterest
+  https://www.pinterest.com.au/jian10au/find-a-tradie-idea/?inviter_user_id=777785935554310351&board_collab_inviter=True&invite_code=337e144454af459e9b131b08ca6a0617
 - Figma
   - we start design it via figma and adapt how it look as we coding
   https://www.figma.com/file/itEEYESDWsVwPzjxoLvwB9/Find-A-Tradie?node-id=35%3A8
@@ -302,7 +304,7 @@ In his profile, he wants to add a description and photos to his business profile
 
 - we make sure that the user are only able to do what they expect to do such as non-user login can not access dashboard etc
 - most of the security logic are put in pundit and are tested
-
+- user has different roles and different role can access different pages/view different content
 22. Discuss methods you will use to protect information and data.
 
 - Check if the usesr are matched with server database
