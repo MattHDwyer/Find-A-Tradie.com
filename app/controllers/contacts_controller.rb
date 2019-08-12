@@ -102,7 +102,7 @@ class ContactsController < ApplicationController
       if locates.length > 0
         locate = locates.find { |l| l.country == "Australia" }
         if locate
-          p[:full_address] = locate.display_name
+          # p[:full_address] = locate.display_name
           p.merge!(:longitude => locate.coordinates.last)
           p.merge!(:latitude => locate.coordinates.first)
           return p
@@ -128,7 +128,7 @@ class ContactsController < ApplicationController
       if locates.length > 0
         locate = locates.find { |l| l.country == "Australia" }
         if locate
-          p[:full_address] = locate.display_name
+          # p[:full_address] = locate.display_name
           p.merge!(:longitude => locate.coordinates.last)
           p.merge!(:latitude => locate.coordinates.first)
           return p
