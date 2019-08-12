@@ -5,8 +5,7 @@
         
         def create
           # Amount in cents
-          @amount = 500
-        
+          @amount = 100 * params[:amount].to_i
           customer = Stripe::Customer.create({
             email: params[:stripeEmail],
             source: params[:stripeToken],
@@ -16,11 +15,16 @@
             customer: customer.id,
             amount: @amount,
             description: 'Rails Stripe customer',
-            currency: 'usd',
+            currency: 'aud',
           })
         
         rescue Stripe::CardError => e
           flash[:error] = e.message
           redirect_to new_charge_path
+
+
+
+          raise
+
         end
       end

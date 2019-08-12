@@ -12,7 +12,7 @@
             @membership.start_date = membership_params[:start_date]
             @membership.end_date = membership_params[:end_date]
             @membership.save!
-            redirect_to dashboards_path
+            @amount = params[:amount].to_f
         end
 
         def edit
@@ -25,7 +25,7 @@
           @membership.end_date = membership_params[:end_date]
           @membership.business_profile_id = membership_params[:business_profile_id]
           @membership.save!
-          redirect_to dashboards_path
+          @amount = params[:amount].to_f
         end
 
 
