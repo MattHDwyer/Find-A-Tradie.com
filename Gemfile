@@ -44,7 +44,7 @@ gem "geocoder"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.1.0", require: false
-gem 'stripe'
+gem "stripe"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -76,3 +76,5 @@ gem "bootstrap", "~>4.0.0"
 gem "font-awesome-rails"
 gem "select2-rails"
 gem "ausburbs"
+
+gem "aws-sdk-s3"
