@@ -1,34 +1,40 @@
-<div class="top-box">
-  <div class="title"> Business Profile ID: <%= @business_profile.id  %> </div>
-  <div class="title"> Business Name:<%= @business_profile.business_name%> </div>
+<div class="container  mx-auto text-center">
+  <p><strong> Business Profile ID: <%= @business_profile.id  %> </strong></p>
+  <p><strong> Business Name:<%= @business_profile.business_name%> </strong></p>
+  <p class="badge-primary col-6 mx-auto mb-4">Start your membership now!</p>
 </div>
-
-
-<p>Start your membership now!</p>
-Option 1 - Monthly: Start now and renew every month.
-
-<%= form_for @membership, url:memberships_path do |f| %>
-  <%= f.hidden_field :start_date, value:Date.current%>
-  <%= f.hidden_field :end_date, value:Date.current + 1.month%>  
-  <%= f.hidden_field :business_profile_id, value:@business_profile.id%>
-  <%= render partial:  'application/stripe_form', locals: {amount: 10} %>
-<%end%>
-
-Option 2 - Quarterly: Start now and renew every quarter.
-<%= form_for @membership, url:memberships_path do |f| %>
-  
-  <%= f.hidden_field :start_date, value:Date.current%>
- 
-  <%= f.hidden_field :end_date, value:Date.current + 3.months%>  
-
-  <%= f.hidden_field :business_profile_id, value:@business_profile.id%>
-   <%= render partial:  'application/stripe_form', locals: {amount: 20}  %>
-<%end%>
-Option 3 - Yearly: Start now and renew every year.
-<%= form_for @membership, url:memberships_path do |f| %>
-  <%= f.hidden_field :start_date, value:Date.current%>
-  <%= f.hidden_field :end_date, value:Date.current + 12.months%>  
-  <%= f.hidden_field :business_profile_id, value:@business_profile.id%>
- <%= render partial: 'application/stripe_form', locals: {amount: 60}  %>
-
-<%end%>
+<div class="d-flex justify-content-around p-2 row text-center">
+  <div class="border border-warning m-2 p-1 col-lg-3 col-sm-9">
+    <p class="badge badge-dark">Option 1 </p>
+    <br>
+    - Monthly: Start now and renew every month.
+    <%= form_for @membership, url:memberships_path do |f| %>
+      <%= f.hidden_field :start_date, value:Date.current%>
+      <%= f.hidden_field :end_date, value:Date.current + 1.month%>
+      <%= f.hidden_field :business_profile_id, value:@business_profile.id%>
+      <%= render partial:  'application/stripe_form', locals: {amount: 10} %>
+    <%end%>
+  </div>
+  <div class="border border-info m-2 p-1 col-lg-3 col-sm-9">
+    <p class="badge badge-dark">Option 2 </p>
+    <br>
+    - Quarterly: Start now and renew every quarter.
+    <%= form_for @membership, url:memberships_path do |f| %>
+      <%= f.hidden_field :start_date, value:Date.current%>
+      <%= f.hidden_field :end_date, value:Date.current + 3.months%>
+      <%= f.hidden_field :business_profile_id, value:@business_profile.id%>
+      <%= render partial:  'application/stripe_form', locals: {amount: 20}  %>
+    <%end%>
+  </div>
+  <div class="border border-danger m-2 p-1 col-lg-3 col-sm-9">
+    <p class="badge badge-dark">Option 3 </p>
+    <br>
+    - Yearly: Start now and renew every year.
+    <%= form_for @membership, url:memberships_path do |f| %>
+      <%= f.hidden_field :start_date, value:Date.current%>
+      <%= f.hidden_field :end_date, value:Date.current + 12.months%>
+      <%= f.hidden_field :business_profile_id, value:@business_profile.id%>
+      <%= render partial: 'application/stripe_form', locals: {amount: 60}  %>
+    <%end%>
+  </div>
+</div>
